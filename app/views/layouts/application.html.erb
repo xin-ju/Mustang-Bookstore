@@ -10,25 +10,57 @@
   </head>
 
   <body>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <%= link_to 'Mustang Books', root_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= active_class(home_path) %>">
+            <%= link_to 'Home', home_path, class: 'nav-link' %>
+          </li>
+           
+        </ul>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+             <li class="nav-item <%= active_class(edit_user_registration_path) %>">
+              <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: 'nav-link' %>
+            </li>
+             <li class="nav-item <%= active_class(destroy_user_session_path) %>">
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+             <li class="nav-item <%= active_class(new_user_session_path) %>">
+              <%= link_to 'Log-In', new_user_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item <%= active_class(new_user_registration_path) %>">
+              <%= link_to 'Sign-Up', new_user_registration_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
     <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to "Hi, #{current_user.email}", edit_user_registration_path %></li>
-        <li><%= link_to 'Log-Out', destroy_user_session_path, method: :delete %></li>
-
-      <% else %>
-        <li><%= link_to 'Log-In', new_user_session_path %></li>
-        <li><%= link_to 'Sign-Up', new_user_registration_path %></li>
-       
-      <% end %>
-    </ul>
 
     <% flash.each do |key, message| %>
       <p><%= message %></p>
     <% end %>
 
-    <%= yield %>
+
+
+ <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-22">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>
-© 2020 GitHub, Inc.

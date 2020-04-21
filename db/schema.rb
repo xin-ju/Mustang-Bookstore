@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-#<<<<<<< iss21
-ActiveRecord::Schema.define(version: 2020_04_17_231913) do
-#=======
-ActiveRecord::Schema.define(version: 2020_04_19_163851) do
-#>>>>>>> master
+ActiveRecord::Schema.define(version: 2020_04_20_185037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-#<<<<<<< iss21
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
@@ -29,7 +24,8 @@ ActiveRecord::Schema.define(version: 2020_04_19_163851) do
     t.string "overview"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-#=======
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -38,9 +34,9 @@ ActiveRecord::Schema.define(version: 2020_04_19_163851) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-#>>>>>>> master
   end
 
 end
