@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+#<<<<<<< iss25
+ActiveRecord::Schema.define(version: 2020_04_21_014210) do
+#=======
 #<<<<<<< iss21
 ActiveRecord::Schema.define(version: 2020_04_17_231913) do
 #=======
 ActiveRecord::Schema.define(version: 2020_04_19_163851) do
 #>>>>>>> master
+#>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+#<<<<<<< iss25
+#=======
 #<<<<<<< iss21
+#>>>>>>> master
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
@@ -29,7 +36,29 @@ ActiveRecord::Schema.define(version: 2020_04_19_163851) do
     t.string "overview"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+#<<<<<<< iss25
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.string "quantity"
+    t.string "integer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "cart_id"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_cart_items_on_book_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.boolean "is_empty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 #=======
+#=======
+#>>>>>>> master
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -43,4 +72,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_163851) do
 #>>>>>>> master
   end
 
+  add_foreign_key "cart_items", "books"
+  add_foreign_key "cart_items", "carts"
 end
