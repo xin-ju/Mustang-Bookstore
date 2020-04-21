@@ -201,3 +201,30 @@ book20 = Book.create!(
   shorthand for the spectral horrors of radiation poisoning, for a dangerous technology slipping its leash, for the ecological fragility, and for what can happen when a dishonest and careless state endangers its citizens and the entire world. But the real story of the accident, clouded from the 
   begninning by secrecy, propaganda, and misinformation, has long remained in dispute.'
 )
+
+u1 = User.create!(
+    email: 'alice@gmail.com',
+    password: 'password',
+    admin: 'True',
+    username: 'Alice'
+)
+
+u2 = User.create!(
+    email: 'bob@gmail.com',
+    password: 'password',
+    admin: 'False',
+    username: 'Bob'
+)
+u3 = User.create!(
+    email: 'cody@gmail.com',
+    password: 'password',
+    admin: 'False',
+    username: 'Cody'
+)
+
+u4 = User.create!(
+    email: 'daniel@gmail.com',
+    password: 'password',
+    admin: 'False',
+    username: 'Daniel'
+)
