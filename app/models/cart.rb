@@ -1,17 +1,12 @@
 # == Schema Information
 #
-# Table name: books
+# Table name: carts
 #
 #  id         :bigint           not null, primary key
-#  author     :string
-#  genre      :string
-#  overview   :string
-#  price      :float
-#  rating     :float
-#  title      :string
+#  is_empty   :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Book < ApplicationRecord
+class Cart < ApplicationRecord
     has_many:cart_items, dependent: :destroy
 end
