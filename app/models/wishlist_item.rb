@@ -17,4 +17,5 @@
 #  fk_rails_...  (book_id => books.id)
 #
 class WishlistItem < ApplicationRecord
+    belongs_to :book
 end
