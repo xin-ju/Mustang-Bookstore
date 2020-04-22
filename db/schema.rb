@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_04_21_014210) do
+=======
+ActiveRecord::Schema.define(version: 2020_04_22_000740) do
+>>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +28,10 @@ ActiveRecord::Schema.define(version: 2020_04_21_014210) do
     t.string "overview"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
+=======
+    t.string "image"
+>>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
   end
 
   create_table "cart_items", force: :cascade do |t|
