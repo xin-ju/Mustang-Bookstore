@@ -5,6 +5,7 @@
 #  id         :bigint           not null, primary key
 #  author     :string
 #  genre      :string
+#  image      :string
 #  overview   :string
 #  price      :float
 #  rating     :float
