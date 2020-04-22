@@ -14,17 +14,17 @@
 #
 
 one:
-  title: MyString
-  author: MyString
-  genre: MyString
-  price: 1.5
-  rating: 1.5
-  overview: MyString
+  title: War and Peace
+  author: Leo Tolstoy
+  genre: Classic
+  price: 2.5
+  rating: 4.5
+  overview: In Russia's struggle with Napoleon, Tolstoy saw a tragedy that involved all mankind. Greater than a historical chronicle, War and Peace is an affirmation of life itself, `a complete picture', as a contemporary reviewer put it, `of everything in which people find their happiness and greatness, their grief and humiliation'. Tolstoy gave his personal approval to this translation, published here in a new single volume edition, which includes an introduction by Henry Gifford, and Tolstoy's important essay `Some Words about War and Peace'.
 
 two:
-  title: MyString
-  author: MyString
-  genre: MyString
-  price: 1.5
-  rating: 1.5
-  overview: MyString
+  title: Harry Potter and the Deathly Hallows
+  author: J. K. Rowling
+  genre: Sci-Fi and Fantasy
+  price: 3.5
+  rating: 5.0
+  overview: Harry Potter is leaving Privet Drive for the last time. But as he climbs into the sidecar of Hagrid’s motorbike and they take to the skies, he knows Lord Voldemort and the Death Eaters will not be far behind. The protective charm that has kept him safe until now is broken. But the Dark Lord is breathing fear into everything he loves. And he knows he can’t keep hiding. To stop Voldemort, Harry knows he must find the remaining Horcruxes and destroy them. He will have to face his enemy in one final battle.

@@ -26,4 +26,24 @@ class CartItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+  test "fixtures are valid" do
+    cart_items.each do |c|
+      assert c.valid?, c.errors.full_messages.inspect
+    end  
+  end
+  test "integer presence not valid" do
+    q = cart_items(:one)
+    q.integer= nil
+    assert_not q.valid?
+    q.integer = ""
+    assert_not q.valid?
 end
+test "quantity presence not valid" do
+  q = cart_items(:one)
+  q.quantity= nil
+  assert_not q.valid?
+  q.quantity = ""
+  assert_not q.valid?
+end
+end
+

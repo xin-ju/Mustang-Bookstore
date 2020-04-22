@@ -13,8 +13,13 @@
 #  updated_at :datetime         not null
 #
 class Book < ApplicationRecord
-#<<<<<<< iss25
-    has_many:cart_items, dependent: :destroy
-#=======
-#>>>>>>> master
+    validates :author, presence: true
+    validates :genre, presence: true
+    validates :overview, presence: true, uniqueness: true
+    validates :rating, presence: true
+    validates :title, presence: true, uniqueness: true
+    validates :price, presence: true
+    
+    has_many :cart_items, dependent: :destroy
+
 end
