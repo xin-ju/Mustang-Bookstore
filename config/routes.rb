@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get 'books/:id/edit', to: 'books#edit', as: 'edit_book' # edit
   patch 'books/:id', to: 'books#update' # update (as needed)
   put 'books/:id', to: 'books#update' # update (full replacement)
-  post 'review', to: 'books#leave_review', as: 'leave_review'
+  post 'review', to: 'books#leave_feedback', as: 'leave_feedback'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

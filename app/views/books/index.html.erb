@@ -9,6 +9,8 @@
       <th>Author</th>
       <th>Genre</th>
       <th>Price</th>
+      <th>View</th>
+      <th>Edit</th>
       <th></th>
     </tr>
   </thead>
@@ -21,6 +23,7 @@
        <td><%= b.price %></td>
        <td><%= link_to '🔎', book_path(b)  %></td>
        <td><%= link_to '🖋', edit_book_path(b)  %></td>
+       <td><%= link_to 'Review', book_path(b) %></td>
      </tr>
     <% end %>
   </tbody>
