@@ -1,0 +1,32 @@
+<h1>Mustang Books</h1>
+<% if current_user.try(:admin?) %>
+       <%= link_to 'Add New Product', new_book_path %>
+<% end %>
+<br>
+<br>
+
+<table class="table table-hover">
+  
+  <tbody>
+  <tr>
+    <% books.each do |b| %>
+      <tr>
+        <b><%= b.title %></b>
+        <li><%= b.author %></li>
+        <li><%= b.genre %></li>
+        <li><%= b.price %></li>
+        <%= link_to 'Product Detail', book_path(b) %>
+        <br>
+        <% if current_user.try(:admin?) %>
+        <%= link_to '🖋', edit_book_path(b)  %>
+        <% end %>
+        <br>
+        <br>
+      </tr>
+  </tr>
+  </tbody>
+</table>
+<%end%>
+
+<%= Rails.root.join("app/assets/images/Sapiens_YuvalNoahHarari.jpg").open %>
+<%= image_tag "TheLostMan_JaneHarper.jpg", height: 300 %>
