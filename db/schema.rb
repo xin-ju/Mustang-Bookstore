@@ -10,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+#<<<<<<< iss28
+ActiveRecord::Schema.define(version: 2020_04_22_051541) do
+#=======
+#<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_04_21_014210) do
-=======
+#=======
 ActiveRecord::Schema.define(version: 2020_04_22_000740) do
->>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
+#>>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
+#>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,10 +32,10 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
     t.string "overview"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
     t.string "image"
->>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
+#>>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -65,6 +69,15 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlist_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_wishlist_items_on_book_id"
+  end
+
   add_foreign_key "cart_items", "books"
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "wishlist_items", "books"
 end
