@@ -1,0 +1,47 @@
+<h1>Edit Product</h1>
+
+<%= form_with model: book, url: books_path, method: :post, local: true, scope: :book  do |f| %>
+    # TODO: Add fields
+    <div>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :author %><br>
+      <%= f.text_field :author %>
+    </div>
+
+    <div>
+     <%= f.label :price %><br>
+     <%= f.text_field :price %>
+    </div>
+
+    <div>
+      <%= f.label :overview %><br>
+      <%= f.text_field :overview %>
+    </div>
+
+    <div>
+      <%= f.label :pages %><br>
+      <%= f.text_field :pages %>
+    </div>
+
+    <div>
+      <%= f.label :format %><br>
+      <%= f.text_field :format %>
+    </div>
+
+    <div>
+     <%= f.label :stock_quantity %><br>
+     <%= f.text_field :stock_quantity %>
+    </div>
+
+    <div>
+     <%= f.label :publication_date %><br>
+     <%= f.text_field :publication_date %>
+    </div>
+
+    <%= f.submit 'Update Product' %>
+
+<% end %>

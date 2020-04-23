@@ -21,7 +21,7 @@ book2 = Book.create!(
   author: 'Louisa May Alcott',
   genre: 'Classic',
   price: 8.95,
-  rating: 3.3,
+  rating: 3.3, 
   overview: 'It is no secret that Alcott based Little Women on her own early life. While her father, the freethinking reformer and abolitionist Bronson Alcott, hobnobbed with such eminent male authors as Emerson, Thoreau, and Hawthorne, Louisa supported herself and her sisters with “woman’s work,” including sewing, doing laundry, and acting as a domestic servant. But she soon discovered she could make more money writing. Little Women brought her lasting fame and fortune,
   and far from being the “girl’s book” her publisher requested, it explores such timeless themes as love and death, war and peace, the conflict between personal ambition and family responsibilities, and the clash of cultures between Europe and America.',
   image: Rails.root.join("app/assets/images/LittleWomen_LouisaMayAlcott.jpg").open
