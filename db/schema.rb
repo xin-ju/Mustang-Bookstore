@@ -10,6 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+#<<<<<<< iss34
+ActiveRecord::Schema.define(version: 2020_04_23_025312) do
+#=======
 #<<<<<<< iss28
 ActiveRecord::Schema.define(version: 2020_04_22_051541) do
 #=======
@@ -18,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_014210) do
 #=======
 ActiveRecord::Schema.define(version: 2020_04_22_000740) do
 #>>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
+#>>>>>>> master
 #>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
@@ -55,6 +59,26 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "order_number"
+    t.string "buyer_name"
+    t.integer "credit_card_number"
+    t.string "order_date"
+    t.string "shipping_info"
+    t.string "billing_info"
+    t.float "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -79,5 +103,6 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
 
   add_foreign_key "cart_items", "books"
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "wishlist_items", "books"
 end
