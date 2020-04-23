@@ -25,7 +25,7 @@ class User < ApplicationRecord
   #do we need presence validation on admin? only one admin is allowed and is seeded
   #if all other users are set to nil can we apply the functionality we need?
   #validates :admin, presence: true
-  validates :admin, inclusion: { in: [true, false] }
+
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true
   validates :encrypted_password, presence: true
@@ -34,5 +34,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :cart
+  
+  
 
 end

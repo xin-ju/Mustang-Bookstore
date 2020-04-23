@@ -1,56 +1,25 @@
-<h1>Mustang Books</h1>
 
-<p style="text-align:right">
-<%= book.title %><br>
-<%= book.author %><br>
-<%= book.rating %><br>
-<%= book.price %><br>
-<%= " Add to Cart " %><br>
-<%= " " %><br>
-<%= " " %><br>
-</p>
 
-<p style="text-align:center">
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " Book Summary " %><br>
-</p>
+<head>
+<style>
+img {
+  float: left; padding-right: 50px;
+}
 
+</style>
+</head>
+<body>
+<div>
+
+<p>
+<h1 style="font-size:75px"><%= book.title %></h1>
+<%= image_tag( book.assetlabel, height: 500) %><br></p>
 <div class="container">
-<%= book.overview %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
+<%= book.overview %></div>
+<br>
+<p> <%= " Total Pages: " %></p>
+<p><%= " Publication Date: " %></p>
+<p><%= " Customer Reviews: " %></p>
 </div>
-
-<p style="text-align:center">
-<%= " Publication Date: " %><br>
-</p>
-
-<p style="text-align:center">
-<%= " Total Pages: " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-<%= " " %><br>
-</p>
-
-<p style="text-align:left-center">
-<%= " Customer Reviews: " %><br>
-</p>
-
-<p style="text-align:left-center">
-<%= " Title: " %><br>
-<%= " Body: " %><br>
-</p>
+</body>
+</html>

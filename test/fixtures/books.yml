@@ -3,6 +3,7 @@
 # Table name: books
 #
 #  id         :bigint           not null, primary key
+#  assetlabel :string
 #  author     :string
 #  genre      :string
 #  image      :string

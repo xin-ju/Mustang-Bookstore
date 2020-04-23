@@ -11,14 +11,10 @@
   <tr>
     <% books.each do |b| %>
       <tr>
-        <b><%= b.title %></b>
-        <li><%= b.author %></li>
-        <li><%= b.genre %></li>
-        <li><%= b.price %></li>
-        <%= link_to 'Product Detail', book_path(b) %>
+        <%= link_to image_tag( b.assetlabel, height: 300), book_path(b) %>
         <br>
         <% if current_user.try(:admin?) %>
-        <%= link_to '🖋', edit_book_path(b)  %>
+        <%= link_to '🔨', edit_book_path(b)  %>
         <% end %>
         <br>
         <br>
@@ -28,5 +24,3 @@
 </table>
 <%end%>
 
-<%= Rails.root.join("app/assets/images/Sapiens_YuvalNoahHarari.jpg").open %>
-<%= image_tag "TheLostMan_JaneHarper.jpg", height: 300 %>
