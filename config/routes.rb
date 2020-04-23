@@ -11,5 +11,11 @@ Rails.application.routes.draw do
   patch 'books/:id', to: 'books#update' # update (as needed)
   put 'books/:id', to: 'books#update' # update (full replacement)
   post 'review', to: 'books#leave_feedback', as: 'leave_feedback'
+
+
+  get 'carts/show'
+  resource :carts, only:[:show]
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
