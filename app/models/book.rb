@@ -14,9 +14,7 @@
 #  updated_at :datetime         not null
 #
 class Book < ApplicationRecord
-#<<<<<<< iss25
-    has_many:cart_items, dependent: :destroy
+    has_many :cart_items, dependent: :destroy
     has_many :wishlist_items, dependent: :destroy
-#=======
-#>>>>>>> master
+    has_many :order_items, dependent: :destroy
 end
