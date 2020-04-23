@@ -18,11 +18,29 @@
 
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item <%= active_class(home_path) %>">
-            <%= link_to 'Home', home_path, class: 'nav-link' %>
-          </li>
            
+       
+   
+          <% if current_user.try(:admin?) %>
+             <li class="nav-item <%= active_class(books_path) %>">
+              <%= link_to "Book Inventory", books_path, class: 'nav-link' %>
+            </li>
+          <% else %>
+          <li class="nav-item <%= active_class(books_path) %>">
+              <%= link_to "Book Inventory", books_path, class: 'nav-link' %>
+            </li>
+             <li class="nav-item <%= active_class(root_path) %>">
+              <%= link_to 'My Cart', root_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item <%= active_class(root_path) %>">
+              <%= link_to 'My Wishlist', root_path, class: 'nav-link' %>
+            </li>
+          <% end %>
         </ul>
+
+
+
+
         <ul class="navbar-nav">
           <% if user_signed_in? %>
              <li class="nav-item <%= active_class(edit_user_registration_path) %>">

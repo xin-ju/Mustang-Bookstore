@@ -10,19 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-#<<<<<<< iss34
-ActiveRecord::Schema.define(version: 2020_04_23_025312) do
-#=======
-#<<<<<<< iss28
-ActiveRecord::Schema.define(version: 2020_04_22_051541) do
-#=======
-#<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_04_21_014210) do
-#=======
-ActiveRecord::Schema.define(version: 2020_04_22_000740) do
-#>>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
-#>>>>>>> master
-#>>>>>>> master
+ActiveRecord::Schema.define(version: 2020_04_23_174247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +24,8 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
     t.string "overview"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-#<<<<<<< HEAD
-#=======
     t.string "image"
-#>>>>>>> 0d2d9193ab51599e23c96eea26c2c1f919d21d71
+    t.string "assetlabel"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -64,6 +50,8 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "order_id"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_order_items_on_book_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
@@ -88,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.boolean "admin", default: false
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -103,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_000740) do
 
   add_foreign_key "cart_items", "books"
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
   add_foreign_key "wishlist_items", "books"
 end

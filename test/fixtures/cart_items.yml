@@ -22,9 +22,9 @@
 #
 
 one:
-  quantity: MyString
-  integer: MyString
+  quantity: 1
+  integer: 2
 
 two:
-  quantity: MyString
-  integer: MyString
+  quantity: 3
+  integer: 4

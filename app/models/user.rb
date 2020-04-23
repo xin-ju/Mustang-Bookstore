@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin                  :boolean          default(FALSE)
+#  admin                  :boolean
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
@@ -21,6 +21,20 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
+  #do we need presence validation on admin? only one admin is allowed and is seeded
+  #if all other users are set to nil can we apply the functionality we need?
+  #validates :admin, presence: true
+
+  validates :email, presence: true, uniqueness: true
+  validates :username, presence: true
+  validates :encrypted_password, presence: true
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_one :cart
+  
+  
+
 end

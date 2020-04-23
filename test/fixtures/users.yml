@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin                  :boolean          default(FALSE)
+#  admin                  :boolean
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
@@ -23,8 +23,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: 
+  admin: false
+  email: johndoe@gmail.com
+  encrypted_password: password
+  username: John Doe
 # column: value
 #
-two: {}
+two: 
+  admin: True
+  email: janedoe@gmail.com
+  encrypted_password: password
+  username: Jane Doe
 # column: value

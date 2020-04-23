@@ -1,30 +1,26 @@
 <h1>Mustang Books</h1>
-
-<%= link_to 'Add Product', new_book_path %>
+<% if current_user.try(:admin?) %>
+       <%= link_to 'Add New Product', new_book_path %>
+<% end %>
+<br>
+<br>
 
 <table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Genre</th>
-      <th>Price</th>
-      <th>View</th>
-      <th>Edit</th>
-      <th></th>
-    </tr>
-  </thead>
+  
   <tbody>
+  <tr>
     <% books.each do |b| %>
       <tr>
-        <td><%= b.title %></td>
-        <td><%= b.author %></td>
-       <td><%= b.genre %></td>
-       <td><%= b.price %></td>
-       <td><%= link_to '🔎', book_path(b)  %></td>
-       <td><%= link_to '🖋', edit_book_path(b)  %></td>
-       <td><%= link_to 'Review', book_path(b) %></td>
-     </tr>
-    <% end %>
+        <%= link_to image_tag( b.assetlabel, height: 300), book_path(b) %>
+        <br>
+        <% if current_user.try(:admin?) %>
+        <%= link_to '🔨', edit_book_path(b)  %>
+        <% end %>
+        <br>
+        <br>
+      </tr>
+  </tr>
   </tbody>
 </table>
+<%end%>
+

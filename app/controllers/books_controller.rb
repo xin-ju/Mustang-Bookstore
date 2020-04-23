@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+
+  before_action :authenticate_user!
   def index
     books = Book.all
     respond_to do |format|
@@ -28,7 +30,7 @@ class BooksController < ApplicationController
         # if question saves
         if book.save
           # success message
-          flash[:success] = "Producted added successfully"
+          flash[:success] = "Product added successfully"
           # redirect to index
           redirect_to books_url
           # else
