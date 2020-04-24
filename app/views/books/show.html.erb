@@ -25,6 +25,7 @@ img {
       <%= f.submit "Add to Cart "%> 
       <br>
       <%= link_to "View My Cart", carts_path%>
+      <div id="cart"><%= render 'carts/cart'%></div>
       <% end %>
     </td>
   <% end %>
