@@ -17,11 +17,10 @@
         <%= link_to "Remove Items", cart_item_path(item), method: :delete, remote: true%>
 
     <% end %>
-    <h2>Subtotal: <%= item.total %></h2>
+    <h3>Subtotal: <%= item.total %></h2>
+    <br>
 
 <% end %>
 
 
-
-
-<h3>Your current cart value has a subtotal of: <%= current_cart.subtotal %></h3>
+<h3>Your current cart value has a total of: <%= current_cart.subtotal %></h3>

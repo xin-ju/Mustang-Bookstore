@@ -17,15 +17,17 @@ img {
 <div class="container">
 <%= book.overview %>
 </div>
+  <% if current_user.try(:admin) == false %>
     <td>
       <%= form_for @cart_item, remote: true  do |f|%> 
       <%= f.hidden_field :book_id, :value => book.id %>
       <%= f.number_field :quantity, :value => 1, :min =>  1%> 
       <%= f.submit "Add to Cart "%> 
       <br>
-      <%= link_to "#{current_cart.cart_items.size} items with a value of $#{current_cart.subtotal}", carts_path%>
+      <%= link_to "View My Cart", carts_path%>
       <% end %>
     </td>
+  <% end %>
 <br>
 <p> <%= " Total Pages: " %></p>
 <p><%= " Publication Date: " %></p>
