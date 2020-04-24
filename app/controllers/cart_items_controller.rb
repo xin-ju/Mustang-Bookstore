@@ -9,15 +9,15 @@ class CartItemsController < ApplicationController
 
 
 
-    def update
-        @cart = current_order
+    def update #Update Cart
+        @cart = current_cart
         @cart_item = @cart.cart_items.find(params[:id])
         @cart_item.update_attributes(cart_params)
         @cart_items = current_cart.cart_items
     end
 
-    def destroy
-        @cart = current_order
+    def destroy #Remove from Cart
+        @cart = current_cart
         @cart_item = @cart.cart_items.find(params[:id])
         @cart_item.destroy
         @cart_items = current_cart.cart_items
