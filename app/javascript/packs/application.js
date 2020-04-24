@@ -23,3 +23,6 @@ document.addEventListener("turbolinks:load", () => {
     $('[data-toggle="tooltip"]').tooltip()
     $('[data-toggle="popover"]').popover()
 })
+
+//= require jquery
+//= require jquery_ujs
