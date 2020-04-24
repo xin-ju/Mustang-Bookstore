@@ -1,0 +1,15 @@
+# == Schema Information
+#
+# Table name: wishlists
+#
+#  id         :bigint           not null, primary key
+#  is_empty   :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  is_empty: false
+
+two:
+  is_empty: false

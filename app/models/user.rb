@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin                  :boolean
+#  admin                  :boolean          default(FALSE)
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
@@ -34,7 +34,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :cart
-  
+  has_one :wishlist
+
   
 
 end
