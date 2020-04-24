@@ -17,7 +17,9 @@ img {
 <div class="container">
 <%= book.overview %>
 </div>
-  <% if current_user.try(:admin) == false %>
+
+<%if current_user.admin? %>
+<%else%>
     <td>
       <%= form_for @cart_item, remote: true  do |f|%> 
       <%= f.hidden_field :book_id, :value => book.id %>
@@ -37,3 +39,5 @@ img {
 </div>
 </body>
 </html>
+ 
+ 
