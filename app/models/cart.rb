@@ -3,6 +3,7 @@
 # Table name: carts
 #
 #  id         :bigint           not null, primary key
+#  subtotal   :decimal(, )
 #  total      :decimal(, )
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
