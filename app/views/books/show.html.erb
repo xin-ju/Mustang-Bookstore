@@ -23,7 +23,7 @@ img {
       <%= f.number_field :quantity, :value => 1, :min =>  1%> 
       <%= f.submit "Add to Cart "%> 
       <br>
-      <%= link_to "#{current_cart.cart_items.size} items with a value of $", carts_path%>
+      <%= link_to "#{current_cart.cart_items.size} items with a value of $#{current_cart.subtotal}", carts_path%>
       <% end %>
     </td>
 <br>
