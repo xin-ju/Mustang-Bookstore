@@ -15,11 +15,22 @@ img {
 <h1 style="font-size:75px"><%= book.title %></h1>
 <%= image_tag( book.assetlabel, height: 500) %><br></p>
 <div class="container">
-<%= book.overview %></div>
+<%= book.overview %>
+</div>
+    <td>
+      <%= form_for @cart_item, remote: true  do |f|%> 
+      <%= f.hidden_field :book_id, :value => book.id %>
+      <%= f.number_field :quantity, :value => 1, :min =>  1%> 
+      <%= f.submit "Add to Cart "%> 
+      <br>
+      <%= link_to "#{current_cart.cart_items.size} items with a value of $", carts_path%>
+      <% end %>
+    </td>
 <br>
 <p> <%= " Total Pages: " %></p>
 <p><%= " Publication Date: " %></p>
 <p><%= " Customer Reviews: " %></p>
+
 </div>
 </body>
 </html>

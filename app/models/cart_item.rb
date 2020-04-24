@@ -22,7 +22,7 @@
 #  fk_rails_...  (cart_id => carts.id)
 #
 class CartItem < ApplicationRecord
-validates :integer, presence: true
+#validates :integer, presence: true
 validates :quantity, presence: true
 
     belongs_to :cart, optional: true

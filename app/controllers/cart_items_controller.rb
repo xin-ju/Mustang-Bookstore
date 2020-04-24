@@ -22,4 +22,10 @@ class CartItemsController < ApplicationController
         @cart_item.destroy
         @cart_items = current_cart.cart_items
     end
+
+    private
+    
+     def cart_params 
+        params.require(:cart_item).permit(:book_id, :quantity)
+     end
 end
