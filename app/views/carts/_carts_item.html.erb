@@ -1,0 +1,26 @@
+<h1>Carts#show</h1>
+<p>Find me in app/views/carts/show.html.erb</p>
+
+
+
+<% @cart_items.each do |item| %>
+
+    <h3><%= item.book.title %></h3>
+    <h5><%= item.book.price %></h5>
+
+
+    <%= form_for item, remote: true do |f| %>
+        <%= f.hidden_field :book_id, :value => item.book.id %>
+        <%= f.number_field :quantity, :value => item.quantity.to_i %>
+        <%= f.submit "Update"%>
+
+        <%= link_to "Remove Items", cart_item_path(item), method: :delete, remote: true%>
+
+    <% end %>
+    <h3>Subtotal: <%= item.total %></h2>
+    <br>
+
+<% end %>
+
+
+<h3>Your current cart value has a total of: <%= current_cart.subtotal %></h3>

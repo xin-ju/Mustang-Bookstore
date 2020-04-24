@@ -3,8 +3,9 @@
 # Table name: cart_items
 #
 #  id         :bigint           not null, primary key
-#  integer    :string
-#  quantity   :string
+#  quantity   :integer
+#  total      :decimal(, )
+#  unit_price :decimal(, )
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  book_id    :bigint
@@ -21,11 +22,38 @@
 #  fk_rails_...  (cart_id => carts.id)
 #
 class CartItem < ApplicationRecord
-validates :integer, presence: true
+#validates :integer, presence: true
 validates :quantity, presence: true
 
     belongs_to :cart, optional: true
     belongs_to :book, optional: true
+
+    before_save :set_unit_price
+    before_save :set_total
+
+    def unit_price
+        if persisted?
+            self[:unit_price]
+        else
+            book.price
+        end
+    end
+
+
+    def total
+        unit_price * quantity
+    end
+
+
+    private
+
+    def set_unit_price
+        self[:unit_price] = unit_price 
+    end
+
+    def set_total
+        self[:total] = total * quantity
+    end
 end
 
 # Added "optional: true" in order for fixture validations to pass muster

@@ -10,6 +10,7 @@ class BooksController < ApplicationController
   
   def show
     book = Book.find(params[:id])
+    @cart_item = current_cart.cart_items.new
     respond_to do |format|
       format.html { render :show, locals: { book: book } }
     end
