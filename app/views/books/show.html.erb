@@ -20,12 +20,23 @@ img {
   <% if current_user.try(:admin) == false %>
     <td>
       <%= form_for @cart_item, remote: true  do |f|%> 
-      <%= f.hidden_field :book_id, :value => book.id %>
-      <%= f.number_field :quantity, :value => 1, :min =>  1%> 
-      <%= f.submit "Add to Cart "%> 
-      <br>
-      <%= link_to "View My Cart", carts_path%>
+        <%= f.hidden_field :book_id, :value => book.id %>
+        <%= f.number_field :quantity, :value => 1, :min =>  1%> 
+        <%= f.submit "Add to Cart "%> 
+        <br>
+        <%= link_to "View My Cart", carts_path%>
+        <div id="cart"><%= render 'carts/cart'%></div>
       <% end %>
+
+      <%= form_for @wishlist_item, remote: true do |f| %>
+        <%= f.hidden_field :book_id, :value => book.id %>
+        <%= f.number_field :quantity, :value => 1, :min => 1 %>
+        <%= f.submit "Add to Wishlist" %>
+        <br>
+        <%= link_to "View Wishlist", wishlists_path %>
+        <div id="wishlist"><%= render 'wishlists/wishlist'%></div>
+      <% end %>
+
     </td>
   <% end %>
 <br>

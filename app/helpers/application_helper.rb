@@ -14,5 +14,15 @@ module ApplicationHelper
             Cart.new
         end
     end
+
+    
+     def current_wishlist
+      if !session[:wishlist_id].nil?
+        Wishlist.find(session[:wishlist_id])
+      else
+        Wishlist.new
+      end
+    end
+
     
 end

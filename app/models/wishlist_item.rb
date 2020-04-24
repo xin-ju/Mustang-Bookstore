@@ -20,6 +20,7 @@
 #  fk_rails_...  (wishlist_id => wishlists.id)
 #
 class WishlistItem < ApplicationRecord
-    belongs_to :book
-    belongs_to :wishlist
+    belongs_to :book, optional: true
+    belongs_to :wishlist, optional: true
+
 end

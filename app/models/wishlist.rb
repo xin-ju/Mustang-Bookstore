@@ -9,5 +9,6 @@
 #
 class Wishlist < ApplicationRecord
     has_many :wishlist_items, dependent: :destroy
+    
     belongs_to :user
 end

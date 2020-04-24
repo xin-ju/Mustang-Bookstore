@@ -1,0 +1,28 @@
+<head>
+<style>
+img {
+    float: left; padding-right: 50px;
+}
+</style>
+</head>
+<body>
+<div>
+
+<h1> Wishlist </h1>
+
+<% @wishlist_items.each do |item| %>
+    <%= image_tag(item.book.assetlabel, height: 200) %><br></p>
+    <div class="container">
+        <h2><%= item.book.title %></h2>
+        <p>By <%= item.book.author %></p>
+        <h5><%= item.book.genre %> | <%= number_to_currency(item.book.price) %> </h5>
+
+        <%= form_for item, remote: true do |f| %>
+            <%= f.hidden_field :book_id, :value => item.book.id %>
+            <%= f.number_field :quantity, :value => item.quantity.to_i %>
+            <%= f.submit "Update"%>
+        <%= link_to 'Remove', wishlist_item_path(item), method: :delete, remote: true %>          
+     <% end %>
+    <br>
+    </div>
+<% end %>
