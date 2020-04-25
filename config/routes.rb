@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   post 'review', to: 'books#leave_feedback', as: 'leave_feedback'
 
 
-  get 'carts/show'
+  
   resource :carts, only:[:show]
   resources :cart_items
+  #resources :orders
+  get 'orders/', to: 'orders#index', as: 'orders' #index
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
