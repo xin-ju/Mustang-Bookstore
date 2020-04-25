@@ -35,6 +35,9 @@
             <li class="nav-item <%= active_class(root_path) %>">
               <%= link_to 'My Wishlist', root_path, class: 'nav-link' %>
             </li>
+            <li class="nav-item <%= active_class(root_path) %>">
+              <%= link_to 'My Orders', orders_path, class: 'nav-link' %>
+            </li>
           <% end %>
         </ul>
 
