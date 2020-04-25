@@ -4,6 +4,8 @@
 #
 #  id          :bigint           not null, primary key
 #  quantity    :integer
+#  total       :decimal(, )
+#  unit_price  :decimal(, )
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  book_id     :bigint

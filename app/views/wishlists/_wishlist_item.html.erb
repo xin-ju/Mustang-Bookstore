@@ -10,6 +10,7 @@ img {
 
 <h1> Wishlist </h1>
 
+
 <% @wishlist_items.each do |item| %>
     <%= image_tag(item.book.assetlabel, height: 200) %><br></p>
     <div class="container">
@@ -21,8 +22,12 @@ img {
             <%= f.hidden_field :book_id, :value => item.book.id %>
             <%= f.number_field :quantity, :value => item.quantity.to_i %>
             <%= f.submit "Update"%>
-        <%= link_to 'Remove', wishlist_item_path(item), method: :delete, remote: true %>          
-     <% end %>
+            <%= link_to "Remove", wishlist_item_path(item), method: :delete, remote: true %>          
+        <% end %>
+
+     <p>Current Wishlist Subtotal: <%= number_to_currency(item.total) %></p>
     <br>
     </div>
 <% end %>
+
+<h3>Your current wishlist value has a total of: <%= number_to_currency(current_wishlist.subtotal) %></h3>
