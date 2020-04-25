@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: carts
+# Table name: wishlists
 #
 #  id         :bigint           not null, primary key
 #  subtotal   :decimal(, )
@@ -8,25 +8,19 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Cart < ApplicationRecord
-
-#validates :is_empty, inclusion: { in: [true, false] }
-    has_many:cart_items, dependent: :destroy
+class Wishlist < ApplicationRecord
+    has_many :wishlist_items, dependent: :destroy
     before_save :set_subtotal
-
+   # belongs_to :user
 
     def subtotal
-        cart_items.collect{|cart_item| cart_item.valid? ? cart_item.unit_price*cart_item.quantity : 0}.sum
+        wishlist_items.collect{|wishlist_item| wishlist_item.valid? ? wishlist_item.unit_price*wishlist_item.quantity : 0}.sum
     end
-
-
-
 
     private
 
     def set_subtotal
         self[:subtotal] = subtotal
     end
-
+    
 end
-
