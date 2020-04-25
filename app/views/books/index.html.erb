@@ -1,26 +1,35 @@
-<h1>Mustang Books</h1>
-<% if current_user.try(:admin?) %>
-       <%= link_to 'Add New Product', new_book_path %>
-<% end %>
+
+<p style="text-align:center"><% if current_user.try(:admin?) %>
+       <em><%= link_to 'Add New Product', new_book_path %></em>
+<% end %></p>
 <br>
 <br>
 
-<table class="table table-hover">
-  
-  <tbody>
-  <tr>
-    <% books.each do |b| %>
-      <tr>
-        <%= link_to image_tag( b.assetlabel, height: 300), book_path(b) %>
-        <br>
-        <% if current_user.try(:admin?) %>
-        <%= link_to '🔨', edit_book_path(b)  %>
-        <% end %>
-        <br>
-        <br>
-      </tr>
-  </tr>
-  </tbody>
-</table>
+<body style="background-color:white;">
+<div class = "page-header">
+<br>
+</div>
+<div class = "row">
+<div class = "col-xs-12 col-m-6 col-md-4 col-lg-3">
+</div>
+</div>
+<div class = "row">
+<% books.each do |book| %>
+<div class = "col-xs-12 col-m-6 col-md-4 col-lg-3">
+</div>
 <%end%>
-
+<br>
+</div>
+<div class = "row">
+<%books.each do |book|%>
+<div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
+    <p style="color:black"><b><i><%= book.title %></i></b></p>
+    <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
+    <h6>$<%= book.price %></h6>
+    <%= link_to 'Product Details', book_path(book) %>
+    <br>
+    <br>
+    </div>
+    <%end%>
+    </div>
+</body>

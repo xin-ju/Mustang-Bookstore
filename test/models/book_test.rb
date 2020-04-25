@@ -2,18 +2,20 @@
 #
 # Table name: books
 #
-#  id          :bigint           not null, primary key
-#  assetlabel  :string
-#  author      :string
-#  book_format :string
-#  genre       :string
-#  image       :string
-#  overview    :string
-#  price       :float
-#  rating      :float
-#  title       :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id               :bigint           not null, primary key
+#  assetlabel       :string
+#  author           :string
+#  book_format      :string
+#  genre            :string
+#  image            :string
+#  overview         :string
+#  page_number      :integer
+#  price            :float
+#  publication_date :string
+#  rating           :float
+#  title            :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 require 'test_helper'
 
