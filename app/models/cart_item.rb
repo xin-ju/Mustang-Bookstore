@@ -63,3 +63,4 @@ end
 # Added "optional: true" in order for fixture validations to pass muster
 # Otherwise error: ["Cart must exist", "Book must exist"] shows in terminal
 # if rails test is run with belongs_to :cart and belongs_to :book only
+

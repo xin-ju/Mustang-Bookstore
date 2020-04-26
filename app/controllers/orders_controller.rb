@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-    def index
+    def index #print all previous orders
       @orders = Order.all
       respond_to do |format|
         format.html {render :index, locals: { orders: @orders } }
