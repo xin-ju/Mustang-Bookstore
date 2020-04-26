@@ -1,0 +1,13 @@
+<%= form_with model: @order, url: orders_path, method: :post, local: true, scope: :order do |f| %> 
+  <div>
+    <%= f.label :buyer_name %><br>
+    <%= f.text_field :buyer_name%>
+  </div>
+
+    <div>
+    <%= f.label :credit_card_number %><br>
+    <%= f.text_field :credit_card_number%>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>

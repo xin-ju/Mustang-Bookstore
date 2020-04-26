@@ -12,14 +12,24 @@ Rails.application.routes.draw do
   put 'books/:id', to: 'books#update' # update (full replacement)
   post 'review', to: 'books#leave_feedback', as: 'leave_feedback'
 
-
-  get 'carts/show'
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  
   resource :carts, only:[:show]
   resources :cart_items
 
   get 'wishlists/show'
   resource :wishlists, only:[:show]
   resources :wishlist_items
+  
+  get 'orders/', to: 'orders#index', as: 'orders' #index
+  #get 'orders', to: 'orders#new', as: 'new_order' #new - Old
+  get 'orders/new', to: 'orders#new', as: 'new_order' #new - checkout to create order
+  post 'orders', to: 'orders#create' # create
+  
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
