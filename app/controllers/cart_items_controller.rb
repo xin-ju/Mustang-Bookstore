@@ -31,3 +31,4 @@ class CartItemsController < ApplicationController
         params.require(:cart_item).permit(:book_id, :quantity)
      end
 end
+

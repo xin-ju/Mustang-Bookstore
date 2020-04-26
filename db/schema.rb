@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 2020_04_25_203600) do
     t.integer "quantity"
     t.decimal "total"
     t.decimal "unit_price"
+    t.bigint "order_id"
     t.index ["book_id"], name: "index_cart_items_on_book_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["order_id"], name: "index_cart_items_on_order_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -107,6 +109,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_203600) do
 
   add_foreign_key "cart_items", "books"
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "orders"
   add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
   add_foreign_key "wishlist_items", "books"

@@ -41,17 +41,17 @@ img {
         <br>
         <%= link_to 'View Wishlist', wishlists_path %>
         <div id="wishlist"><%= render 'wishlists/wishlist'%></div>
-      
+       <% end %>
+    
+
+    <% end %>
       <div><%= book.author%></div>
       <div><%= book.page_number %> pages </div>
       <div><%= book.book_format %></div>
       <div><%= book.publication_date %></div>
       <div>$<%= book.price %> (tax included in price)</div>
       
-      <% end %>
-    
-
-    <% end %>
+     
 </td>
 <br>
  
