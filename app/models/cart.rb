@@ -11,7 +11,7 @@
 class Cart < ApplicationRecord
 
 #validates :is_empty, inclusion: { in: [true, false] }
-    has_many:cart_items, dependent: :destroy
+    has_many :cart_items, dependent: :destroy
     before_save :set_subtotal
 
 

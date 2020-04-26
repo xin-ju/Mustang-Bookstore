@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
+
   resource :carts, only:[:show]
   resources :cart_items
 
@@ -32,4 +33,5 @@ Rails.application.routes.draw do
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

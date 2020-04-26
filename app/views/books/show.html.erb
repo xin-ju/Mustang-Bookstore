@@ -11,26 +11,28 @@ img {
 <body>
 <div>
 
-<p>
-<h1 style="font-size:75px"><%= book.title %></h1>
+<h1 style="font-size:75px"><%=book.title %></h1>
 <%= image_tag( book.assetlabel, height: 500) %><br></p>
 <div class="container">
 <%= book.overview %>
 </div>
-  <% if current_user.try(:admin) == false %>
+<br>
+<br>
+<% if current_user.try(:admin?)== false %>
     <td>
       <%= form_for @cart_item, remote: true  do |f|%> 
-        <%= f.hidden_field :book_id, :value => book.id %>
-        <%= f.number_field :quantity, :value => 1, :min =>  1%> 
-        <%= f.submit "Add to Cart "%> 
-        <br>
-        <%= link_to "View My Cart", carts_path%>
-        <div id="cart"><%= render 'carts/cart'%></div>
+      <%= f.hidden_field :book_id, :value => book.id %>
+      <%= f.number_field :quantity, :value => 1, :min =>  1%> 
+      <%= f.submit "Add to Cart "%> 
+      <br>
+      <%= link_to "View My Cart", carts_path%>
+      <div id="cart"><%= render 'carts/cart'%></div>
       <% end %>
     </td>
-  <% end %>
+<%end%>
+<br>
 
-  <% if current_user.try(:admin) == false %>
+<% if current_user.try(:admin?) == false %>
     <td>
       <%= form_for @wishlist_item, remote: true do |f| %>
         <%= f.hidden_field :book_id, :value => book.id %>
@@ -39,15 +41,26 @@ img {
         <br>
         <%= link_to 'View Wishlist', wishlists_path %>
         <div id="wishlist"><%= render 'wishlists/wishlist'%></div>
-      <% end %>
-    </td>
-  <% end %>
+       <% end %>
+    
 
+    <% end %>
+      <div><%= book.author%></div>
+      <div><%= book.page_number %> pages </div>
+      <div><%= book.book_format %></div>
+      <div><%= book.publication_date %></div>
+      <div>$<%= book.price %> (tax included in price)</div>
+      
+     
+</td>
 <br>
-<p> <%= " Total Pages: " %></p>
-<p><%= " Publication Date: " %></p>
-<p><%= " Customer Reviews: " %></p>
+ 
+
+
+
 
 </div>
 </body>
 </html>
+ 
+ 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>Mustang Books</title>
@@ -19,7 +20,6 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
            
-       
    
           <% if current_user.try(:admin?) %>
              <li class="nav-item <%= active_class(books_path) %>">
@@ -39,11 +39,18 @@
               <%= link_to 'My Orders', orders_path, class: 'nav-link' %>
             </li>
           <% end %>
-        </ul>
-
-
-
-
+        
+       </ul>
+<ul style="list-style: none;">  
+  <% if user_signed_in? %>
+    <li><form class="form-inline my-2 my-lg-10">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-1" type="submit">Search</button>
+    </form>
+ </li>
+<%else%>
+<%end%>
+</ul>
         <ul class="navbar-nav">
           <% if user_signed_in? %>
              <li class="nav-item <%= active_class(edit_user_registration_path) %>">
@@ -75,6 +82,7 @@
  <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-22">
+        
           <%= yield %>
         </div>
       </div>

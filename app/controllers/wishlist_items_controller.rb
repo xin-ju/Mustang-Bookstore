@@ -1,6 +1,7 @@
 class WishlistItemsController < ApplicationController
 
-    def create
+    def create 
+       
         @wishlist = current_wishlist
         @wishlist_item = @wishlist.wishlist_items.new(wishlist_params)
         @wishlist.save
@@ -8,19 +9,23 @@ class WishlistItemsController < ApplicationController
     end
 
     def update
+       
         @wishlist = current_wishlist
         @wishlist_item = @wishlist.wishlist_items.find(params[:id])
         @wishlist_item.update_attributes(wishlist_params)
         @wishlist_items = current_wishlist.wishlist_items
         redirect_to wishlists_url
+
     end
 
     def destroy
+        
         @wishlist = current_wishlist
         @wishlist_item = @wishlist.wishlist_items.find(params[:id])
         @wishlist_item.destroy
         @wishlist_items = current_wishlist.wishlist_items
         redirect_to wishlists_url
+
     end
 
     private
