@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   resources :wishlist_items
   
   get 'orders/', to: 'orders#index', as: 'orders' #index
-  get 'orders', to: 'orders#new', as: 'new_order' #new - checkout to create order
+  #get 'orders', to: 'orders#new', as: 'new_order' #new - Old
+  get 'orders/new', to: 'orders#new', as: 'new_order' #new - checkout to create order
   post 'orders', to: 'orders#create' # create
   
 

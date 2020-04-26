@@ -1,13 +1,17 @@
 <h2>All Orders</h2>
 
+
+<!-- Only display orders of that user not all previous orders in the database -->
 <% @orders.each do |order| %>
   <p>Name: <%= order.buyer_name %></p>
   <p>Credit Card Number: <%= order.credit_card_number %></p>
-  -----------------------------------------------------
-  <!-- <p>Items: </p> --> 
-  <!-- <ul>
+
+  <p>Items: </p>  
+  <ul>
     <% order.cart_items.each do |item| %>
-    <li><%= item.total %></li>
+    <%= image_tag(item.book.assetlabel, height: 200) %><br></p> 
+    <!-- <li>Item Price: <%=item.total %></li> --> 
     <% end %> 
-  </ul> --> 
+  </ul> 
+  -----------------------------------------------------
 <% end %>
