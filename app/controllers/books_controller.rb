@@ -6,8 +6,9 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html { render :index, locals: { books: books } }
     end
-  end
-  
+end
+
+
   def show
     book = Book.find(params[:id])
     @cart_item = current_cart.cart_items.new
@@ -24,7 +25,7 @@ class BooksController < ApplicationController
   end
   def create
     # new object from params
-    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre))
+    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format))
     # respond_to block
     respond_to do |format|
       format.html do
