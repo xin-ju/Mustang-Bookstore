@@ -6,17 +6,17 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html { render :index, locals: { books: books } }
     end
-end
-
+  end
 
   def show
     book = Book.find(params[:id])
     @cart_item = current_cart.cart_items.new
+    @wishlist_item = current_wishlist.wishlist_items.new
     respond_to do |format|
       format.html { render :show, locals: { book: book } }
     end
   end
-  
+end
   def new
     book = Book.new
     respond_to do |format|
@@ -101,4 +101,3 @@ end
       format.html { render :review, locals: { status_msg: form_status_msg, feedback: params } }
     end
   end
-end
