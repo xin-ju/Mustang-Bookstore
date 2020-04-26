@@ -18,19 +18,19 @@ class BooksController < ApplicationController
   end
 end
   def new
-    book = Book.new
+    books = Book.new
     respond_to do |format|
-      format.html { render :new, locals: { book: book } }
+      format.html { render :new, locals: { books: books } }
     end
   end
   def create
     # new object from params
-    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format))
+    books = Book.new(params.require(:books).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format))
     # respond_to block
     respond_to do |format|
       format.html do
         # if question saves
-        if book.save
+        if books.save
           # success message
           flash[:success] = "Product added successfully"
           # redirect to index
@@ -40,7 +40,7 @@ end
           # error message
           flash.now[:error] = "Error: Product could not be added"
           # render new
-          render :new, locals: { book: book }
+          render :new, locals: { books: books }
         end
       end
     end
@@ -60,7 +60,7 @@ end
     respond_to do |format|
       format.html do
         # if question updates with permitted params
-        if book.update(params.require(:book).permit(:title, :author, :price, :genre))
+        if book.update(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format))
           # success message
           flash[:success] = 'Product updated successfully'
           # redirect to index

@@ -14,6 +14,8 @@ class WishlistItemsController < ApplicationController
         @wishlist_item = @wishlist.wishlist_items.find(params[:id])
         @wishlist_item.update_attributes(wishlist_params)
         @wishlist_items = current_wishlist.wishlist_items
+        redirect_to wishlists_url
+
     end
 
     def destroy
@@ -22,6 +24,8 @@ class WishlistItemsController < ApplicationController
         @wishlist_item = @wishlist.wishlist_items.find(params[:id])
         @wishlist_item.destroy
         @wishlist_items = current_wishlist.wishlist_items
+        redirect_to wishlists_url
+
     end
 
     private
