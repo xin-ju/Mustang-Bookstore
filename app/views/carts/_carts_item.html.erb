@@ -13,7 +13,9 @@ img {
 <!--Find me in app/views/carts/show.html.erb -->
 
 <% @cart_items.each do |item| %>
+<% if item.book.assetlabel %>
     <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br></p> 
+<%end%>
     <div class="container">
        <h2><%= link_to item.book.title, book_path(item.book_id)%></h2>
        <p>By <%= item.book.author %></p>

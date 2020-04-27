@@ -12,7 +12,9 @@ img {
 
 
 <% @wishlist_items.each do |item| %>
+<% if item.book.assetlabel %>
     <%= image_tag(item.book.assetlabel, height: 200) %><br></p>
+<%end%>
     <div class="container">
         <h2><%= item.book.title %></h2>
         <p>By <%= item.book.author %></p>
