@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
       
     private
         def order_params
-          params.require(:order).permit(:buyer_name, :credit_card_number)
+          params.require(:order).permit(:credit_card_number, :exp_date, :security_code, :total, :created_at)
         end
 
 

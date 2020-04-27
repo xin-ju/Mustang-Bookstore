@@ -1,13 +1,59 @@
-<%= form_with model: @order, url: orders_path, method: :post, local: true, scope: :order do |f| %> 
-  <div>
-    <%= f.label :buyer_name %><br>
-    <%= f.text_field :buyer_name%>
-  </div>
+<head>
+<style>
+img {
+  float: left; padding-right: 50px;
+}
 
+</style>
+</head>
+<body>
+<div>
+
+
+
+<h1> Checkout</h1>
+<%= form_with model: @order, url: orders_path, method: :post, local: true, scope: :order do |f| %> 
+  <hr class="solid"> 
+  
+   <h2> Shipping Address</h2>
     <div>
-    <%= f.label :credit_card_number %><br>
+    <%= f.label :Electronic_Delivery%><br>
+    <%= f.email_field :buyer_name%>
+  </div> 
+  <hr class="solid"> 
+
+  <h2> Billing Information</h2>
+  <div>
+    <%= f.label :card_number%><br>
     <%= f.text_field :credit_card_number%>
   </div>
+  <div>
+    <%= f.label :Expiration_date %><br>
+    <%= f.month_field :exp_date%> 
+  </div>
+  <div>
+    <%= f.label :Security_Code %><br>
+    <%= f.text_field :security_code%>
+  </div>
+  <hr class="solid">
 
-  <%= f.submit "Submit" %>
+  <div class="card-header bg-light text-dark">
+        <h2> Delivered Electronically </h2>
+  </div>
+  <div class="card-body">
+    <%current_cart.cart_items.each do |item| %>
+        <%= link_to image_tag(item.book.assetlabel, height: 150)%><br></p> 
+        <div class="container">
+          <h4><%= item.book.title%></h4>
+          <p>By <%= item.book.author %></p>
+          <h6><%= item.book.genre %> | <%= number_to_currency(item.book.price)%> </h6>
+          <p>Subtotal: <%= number_to_currency(item.total) %></p>
+        <br>
+        </div>
+    <% end %> 
+  <div class="card-footer">
+
+
+  <%= f.submit "Place Order" %>
 <% end %>
+
