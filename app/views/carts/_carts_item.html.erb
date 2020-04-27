@@ -26,7 +26,7 @@ img {
            <%= f.hidden_field :book_id, :value => item.book.id %>
            <%= f.number_field :quantity, :value => item.quantity.to_i %>
            <%= f.submit "Update"%>
-        <%= link_to "Remove", cart_item_path(item), method: :delete, remote: true%> 
+        <%= link_to "Remove Item(s)", cart_item_path(item), method: :delete, remote: true%> 
        <% end %>
       <p>Subtotal: <%= number_to_currency(item.total) %></p> 
     <br>

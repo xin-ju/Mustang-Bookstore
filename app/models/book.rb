@@ -28,6 +28,8 @@ class Book < ApplicationRecord
 
     has_many :cart_items, dependent: :destroy
     has_many :wishlist_items, dependent: :destroy
-    has_many :order_items, dependent: :destroy
-
+    #has_many :order_items, dependent: :destroy
+    
+    #order_items not added yet to project, needed to comment above line of code out to 
+    #allow seller delete product function. Delete item should continue work once order_items is added
 end
