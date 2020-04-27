@@ -16,21 +16,22 @@ class BooksController < ApplicationController
       format.html { render :show, locals: { book: book } }
     end
   end
-end
+
   def new
-    books = Book.new
+    book = Book.new
     respond_to do |format|
-      format.html { render :new, locals: { books: books } }
+      format.html { render :new, locals: { book: book } }
     end
   end
+
   def create
     # new object from params
-    books = Book.new(params.require(:books).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format))
+    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview, :rating))
     # respond_to block
     respond_to do |format|
       format.html do
         # if question saves
-        if books.save
+        if book.save!
           # success message
           flash[:success] = "Product added successfully"
           # redirect to index
@@ -40,7 +41,7 @@ end
           # error message
           flash.now[:error] = "Error: Product could not be added"
           # render new
-          render :new, locals: { books: books }
+          render :new, locals: { book: book }
         end
       end
     end
@@ -55,12 +56,12 @@ end
   
   def update
     # load existing object again from URL param
-    book = Book.find(params[:id])
+    books = Book.find(params[:id])
     # respond_to block
     respond_to do |format|
       format.html do
         # if question updates with permitted params
-        if book.update(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format))
+        if books.update(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview))
           # success message
           flash[:success] = 'Product updated successfully'
           # redirect to index
@@ -70,11 +71,29 @@ end
           # error message
           flash.now[:error] = 'Error: Product could not be updated'
           # render edit
-          render :edit, locals: { book: book }
+          render :edit, locals: { books: books }
         end
       end
     end
   end
+
+  def destroy
+    # load existing object again from URL param
+    book = Book.find(params[:id])
+    # destroy object
+    book.destroy
+    # respond_to block
+    respond_to do |format|
+        format.html do
+            # success message
+            flash[:success] = 'Book removed successfully'
+            # redirect to index
+            redirect_to books_url
+        end
+    end
+end
+
+
 
   def review
     respond_to do |format|
@@ -101,3 +120,4 @@ end
       format.html { render :review, locals: { status_msg: form_status_msg, feedback: params } }
     end
   end
+end

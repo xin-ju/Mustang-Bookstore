@@ -13,10 +13,13 @@ img {
 <!--Find me in app/views/carts/show.html.erb -->
 <!-- <div class="card-header bg-light text-dark">
 </div> --> 
+
 <div class="card-body">
  <% @cart_items.each do |item| %>
+ <% if item.book.assetlabel %>
      <hr class="solid">
     <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br></p> 
+<%end%>
     <div class="container">
        <h2><%= link_to item.book.title, book_path(item.book_id)%></h2>
        <p>By <%= item.book.author %></p>
@@ -27,7 +30,7 @@ img {
            <%= f.hidden_field :book_id, :value => item.book.id %>
            <%= f.number_field :quantity, :value => item.quantity.to_i %>
            <%= f.submit "Update"%>
-        <%= link_to "Remove", cart_item_path(item), method: :delete, remote: true%> 
+        <%= link_to "Remove Item(s)", cart_item_path(item), method: :delete, remote: true%> 
        <% end %>
       <p>Subtotal: <%= number_to_currency(item.total) %></p> 
     <br>

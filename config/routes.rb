@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'books/:id/edit', to: 'books#edit', as: 'edit_book' # edit
   patch 'books/:id', to: 'books#update' # update (as needed)
   put 'books/:id', to: 'books#update' # update (full replacement)
-  post 'review', to: 'books#leave_feedback', as: 'leave_feedback'
+  delete 'books/:id', to: 'books#destroy' # destroy
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
