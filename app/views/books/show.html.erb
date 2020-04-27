@@ -12,7 +12,11 @@ img {
 <div>
 
 <h1 style="font-size:75px"><%=book.title %></h1>
+
+<% if book.assetlabel %>
 <%= image_tag( book.assetlabel, height: 500) %><br></p>
+<%end%>
+
 <div class="container">
 <%= book.overview %>
 </div>
