@@ -25,6 +25,7 @@ img {
             <%= link_to "Remove", wishlist_item_path(item), method: :delete, remote: true %>          
         <% end %>
 
+   
      <p>Current Wishlist Subtotal: <%= number_to_currency(item.total) %></p>
     <br>
     </div>
