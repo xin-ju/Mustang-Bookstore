@@ -3,8 +3,8 @@
 
 <!-- Only display orders of that user not all previous orders in the database (add User has order association) --> 
 <% @orders.each do |order| %>
-  <p>Name: <%= order.buyer_name %></p>
   <p>Credit Card Number: <%= order.credit_card_number %></p>
+  <!-- <p>Exp. Date: <%= order.exp_date %></p> --> 
 
   <p>Items: </p>  
   <ul>

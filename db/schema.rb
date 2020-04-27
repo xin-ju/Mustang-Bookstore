@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_214744) do
+ActiveRecord::Schema.define(version: 2020_04_27_050054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,14 +34,13 @@ ActiveRecord::Schema.define(version: 2020_04_26_214744) do
   create_table "cart_items", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cart_id"
     t.bigint "book_id"
     t.integer "quantity"
     t.decimal "total"
     t.decimal "unit_price"
     t.bigint "order_id"
+    t.bigint "cart_id"
     t.index ["book_id"], name: "index_cart_items_on_book_id"
-    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["order_id"], name: "index_cart_items_on_order_id"
   end
 
@@ -53,16 +52,13 @@ ActiveRecord::Schema.define(version: 2020_04_26_214744) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "buyer_name"
     t.float "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "shipping_street"
-    t.string "shipping_state"
-    t.bigint "shipping_zip"
     t.string "credit_card_number"
     t.date "exp_date"
     t.integer "security_code"
+    t.string "email"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,7 +95,6 @@ ActiveRecord::Schema.define(version: 2020_04_26_214744) do
   end
 
   add_foreign_key "cart_items", "books"
-  add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "orders"
   add_foreign_key "wishlist_items", "books"
   add_foreign_key "wishlist_items", "wishlists"
