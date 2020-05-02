@@ -3,20 +3,32 @@
 img {
   float: left; padding-right: 50px;
 }
-
+p {text-align: center;}
+h1 {text-align: center;}
+h2 {text-align: center;}
 </style>
 </head>
 <body>
 <div>
 
-<h1> My Cart</h1> 
 <!--Find me in app/views/carts/show.html.erb -->
-<!-- <div class="card-header bg-light text-dark">
-</div> --> 
+<div class="card-body">
+  <% if current_cart.subtotal.zero? == true  %>
+    <br>
+    <h2> Your Cart is empty. </h2> <br>
+    <h2> Start Shopping and get free electronic delivery on all items</h2>
+    <%= link_to "Shop Now", books_path %><br> 
+  <%end%>
+</div> 
+
+<% if current_cart.subtotal.zero? == false  %>
+<h1> My Cart</h1> 
 <div class="card-body">
  <% @cart_items.each do |item| %>
+ <% if item.book.assetlabel %>
      <hr class="solid">
     <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br></p> 
+<%end%>
     <div class="container">
        <h2><%= link_to item.book.title, book_path(item.book_id)%></h2>
        <p>By <%= item.book.author %></p>
@@ -27,7 +39,7 @@ img {
            <%= f.hidden_field :book_id, :value => item.book.id %>
            <%= f.number_field :quantity, :value => item.quantity.to_i %>
            <%= f.submit "Update"%>
-        <%= link_to "Remove", cart_item_path(item), method: :delete, remote: true%> 
+        <%= link_to "Remove Item(s)", cart_item_path(item), method: :delete, remote: true%> 
        <% end %>
       <p>Subtotal: <%= number_to_currency(item.total) %></p> 
     <br>
@@ -35,8 +47,30 @@ img {
  <% end %>
 <div class="card-footer">
 
-<h3>Your current cart value has a total of: <%= number_to_currency(current_cart.subtotal) %></h3> 
 
-<% if current_cart.subtotal.zero? == false  %>
-<%= link_to "Proceed to checkout", new_order_path %><br> 
+
+<div class="card-header bg-light text-dark">
+  <div class="pull-right" style="margin: 10px">
+    <div class="pull-right" style="margin: 5px">
+      <br>
+      <p>
+         Subtotal: <b><%= number_to_currency(current_cart.subtotal)%></b>
+      </p>
+      <p>
+         Estimated Shipping: <b>Free</b>
+      </p>
+      <p>
+         Tax: <b>$0.00</b>
+      </p>
+      <p>
+         ____________________________
+      </p>
+      <h3> Order Total: <%= number_to_currency(current_cart.subtotal) %></h3> 
+      <%= link_to "Proceed to checkout", new_order_path %><br> 
+   </div>
+  </div>
+</div> 
 <%end%>
+
+<!-- <h3> Order Total: <%= number_to_currency(current_cart.subtotal) %></h3>  --> 
+

@@ -28,10 +28,13 @@
 <%books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
     <p style="color:black"><b><i><%= book.title %></i></b></p>
-    <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
+<% if book.assetlabel %>
+        <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
+<%end%>
     <h6>$<%= book.price %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <%= link_to '🔨', edit_book_path(book)  %>
+    <%= link_to '🗑', book_path(book), method: :delete %>
     <br>
     <br>
     </div>
@@ -60,7 +63,9 @@
 <%books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
     <p style="color:black"><b><i><%= book.title %></i></b></p>
-    <%= link_to image_tag(book.assetlabel, height: 210, width: 125), book_path(book) %>
+<% if book.assetlabel %>
+        <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
+<%end%>
     <h6>$<%= book.price %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <br>

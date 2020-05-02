@@ -17,7 +17,7 @@ book1 = Book.create!(
   Just when you think you have all the pieces in place, this slow burn thriller will casually rebut all your theories, keeping you guessing until the very end. Thoroughly atmospheric and filled with compelling characters, this is a story that stays with you long after you finish reading.',
   image: Rails.root.join("app/assets/images/ATaleOfTwoCities_CharlesDickens.jpg").open,
   assetlabel:'TheLostMan_JaneHarper.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 340,
   publication_date: 'First published 10/23/2018'
 
@@ -34,7 +34,7 @@ book2 = Book.create!(
   and far from being the “girl’s book” her publisher requested, it explores such timeless themes as love and death, war and peace, the conflict between personal ambition and family responsibilities, and the clash of cultures between Europe and America.',
   image: Rails.root.join("app/assets/images/LittleWomen_LouisaMayAlcott.jpg").open,
   assetlabel:'LittleWomen_LouisaMayAlcott.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 449,
   publication_date: 'First published 11/30/1868'
 
@@ -50,7 +50,7 @@ book3 = Book.create!(
   Toby is forced to face the possibility that his past may not be what he has always believed.',
   image: Rails.root.join("app/assets/images/TheWitchElm_TanaFrench.jpg").open,
   assetlabel:'TheWitchElm_TanaFrench.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 464,
   publication_date: 'First published 10/09/2018'
 )
@@ -65,7 +65,7 @@ book4 = Book.create!(
   Who would murder a child and leave the only witness behind?',
   image: Rails.root.join("app/assets/images/TheBoy_TamiHoag.jpg").open,
   assetlabel:'TheBoy_TamiHoag.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 482,
   publication_date: 'First published 12/31/2018'
 )
@@ -79,7 +79,7 @@ book5 = Book.create!(
   overview: 'Emma Woodhouse is a wealthy, exquisite, and thoroughly self-deluded young woman who has "lived in the world with very little to distress or vex her."',
   image: Rails.root.join("app/assets/images/Emma_JaneAusten.jpg").open,
   assetlabel:'Emma_JaneAusten.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 474,
   publication_date: 'First published 12/23/1815'
 
@@ -96,7 +96,7 @@ book6 = Book.create!(
   Sophie, a young student from the wrong side of Xiosphant city, is exiled into the dark after being part of a failed revolution. But she survives—with the help of a mysterious savior from beneath the ice. Burdened with a dangerous, painful secret, Sophie and her ragtag group of exiles face the ultimate challenge—and they are running out of time.',
   image: Rails.root.join("app/assets/images/TheCityInTheMiddleOfTheNight_CharlieJaneAnders.jpg").open,
   assetlabel:'TheCityInTheMiddleOfTheNight_CharlieJaneAnders.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 366,
   publication_date: 'First published 2/12/2019'
 )
@@ -110,7 +110,7 @@ book7 = Book.create!(
   overview: 'Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides—who would become known as Muad’Dib—and of a great family’s ambition to bring to fruition humankind’s most ancient and unattainable dream.',
   image: Rails.root.join("app/assets/images/Dune_FrankHerbert.jpg").open,
   assetlabel:'Dune_FrankHerbert.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 604,
   publication_date: 'First published 06/01/1965'
 
@@ -125,7 +125,7 @@ book8 = Book.create!(
   overview: 'One of Dickens’s most exciting novels, A Tale of Two Cities is a stirring classic of love, revenge, and resurrection.',
   image: Rails.root.join("app/assets/images/ATaleOfTwoCities_CharlesDickens.jpg").open,
   assetlabel:'ATaleOfTwoCities_CharlesDickens.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 489,
   publication_date: 'First published 01/01/1879'
 )
@@ -139,7 +139,7 @@ book9 = Book.create!(
   overview: 'Humorous and profound, and filled with highly entertaining dialogue, this witty comedy of manners dips and turns through drawing-rooms and plots to reach an immensely satisfying finale. In the words of Eudora Welty, Pride and Prejudice is as "irresistible and as nearly flawless as any fiction could be."',
   image: Rails.root.join("app/assets/images/PrideAndPredjudice_JaneAusten.jpg").open,
   assetlabel:'PrideAndPredjudice_JaneAusten.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 432,
   publication_date: 'First published 01/28/1813'
 )
@@ -155,7 +155,7 @@ book10 = Book.create!(
   The product of a one-time assignation between the now dead Sherlock Holmes and Irene Adler, the only woman to ever outwit the famous detective, Joanna has unwittingly inherited her parents’ deductive genius.',
   image: Rails.root.join("app/assets/images/TheDaughterOfSherlockHolmes_LeonardGoldberg.jpg").open,
   assetlabel:'TheDaughterOfSherlockHolmes_LeonardGoldberg.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 305,
   publication_date: 'First published 06/06/2017'
 
@@ -171,7 +171,7 @@ book11 = Book.create!(
   No one knows yet who he is or where he is because he ran away. From DNA, they discover his name is Justice Cummings and he’s a CIA analyst at Langley...and he’s still missing.',
   image: Rails.root.join("app/assets/images/Labyrinth_CatherineCoulter.jpg").open,
   assetlabel:'Labyrinth_CatherineCoulter.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 497,
   publication_date: '07/30/2019',
 )
@@ -186,7 +186,7 @@ book12 = Book.create!(
   Both are looking for a husband, but neither Elinor’s reason nor Marianne’s passion can lead them to perfect happiness—as Marianne falls for an unscrupulous rascal and Elinor becomes attached to a man who’s already engaged.',
   image: Rails.root.join("app/assets/images/SenseAndSensibility_JaneAusten.jpg").open,
   assetlabel:'SenseAndSensibility_JaneAusten.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 409,
   publication_date: 'First published 10/30/1811'
 )
@@ -201,7 +201,7 @@ book13 = Book.create!(
   She’ll do whatever it takes to avenge their deaths.',
   image: Rails.root.join("app/assets/images/HouseOfEarthAndBlood_SarahJMaas.jpg").open,
   assetlabel:'HouseOfEarthAndBlood_SarahJMaas.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 816,
   publication_date: 'Published on 03/03/2020'
 
@@ -217,7 +217,7 @@ book14 = Book.create!(
   But when he meets an eccentric young neighbor, Clarisse, who introduces him to a past where people didn’t live in fear and to a present where one sees the world through the ideas in books instead of the mindless chatter of television, Montag begins to question everything he has ever known.',
   image: Rails.root.join("app/assets/images/Fahrenheit451_RayBradbury.jpg").open,
   assetlabel:'Fahrenheit451_RayBradbury.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 175,
   publication_date: 'First published 10/01/1953'
 )
@@ -231,7 +231,7 @@ book15 = Book.create!(
   overview: 'The Mayan god of death sends a young woman on a harrowing, life-changing journey in this dark, one-of-a-kind fairy tale inspired by Mexican folklore.',
   image: Rails.root.join("app/assets/images/GodsOfJadeAndShadow_SilviaMorenoGarcia.jpg").open,
   assetlabel:'GodsOfJadeAndShadow_SilviaMorenoGarcia.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 338,
   publication_date: 'First published 07/23/19'
 )
@@ -246,7 +246,7 @@ book16 = Book.create!(
   killing 45,000 Britons. It was up to Churchill to hold his country together and persuade President Franklin Roosevelt that Britian was a worthy ally-and willing to fight to the end.',
   image: Rails.root.join("app/assets/images/TheSplendidAndTheVile_ErikLarson.jpg").open,
   assetlabel:'TheSplendidAndTheVile_ErikLarson.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 464,
   publication_date: 'First published 02/25/2020'
 )
@@ -260,7 +260,7 @@ book17 = Book.create!(
   overview: 'One hundred thousand years ago, at least six different species of humans inhabited Earth. Yet today ther is only one-homo sapiens. What happened to the others? And what may happen to us?',
   image: Rails.root.join("app/assets/images/Sapiens_YuvalNoahHarari.jpg").open,
   assetlabel:'Sapiens_YuvalNoahHarari.jpg',
-  book_format: 'Paperback',
+  book_format: 'eBook',
   page_number: 498,
   publication_date: 'First published 01/01/2011'
 
@@ -269,7 +269,7 @@ book17 = Book.create!(
 book18 = Book.create!(
   title: 'Say Nothing: A True Story of Murder and Memory in Northern Ireland',
   author: 'Patrick Radden Keefe',
-  genre: 'Nonfiction',
+  genre: 'eBook',
   price: 16.95,
   rating: 4.6,
   overview: 'In December 1972, Jean McConville, a thirty-eight-year-old mother of ten, was dragged from her Belfast home by masked intruders, her children clinging to her legs. They never saw her again. Her abduction was one of the most notorious episodes of the vicious conflict knon as The Troubles.
@@ -277,7 +277,7 @@ book18 = Book.create!(
   attached to her dress- with so many kids, she always kept it handy for diapers or ripped clothes.',
   image: Rails.root.join("app/assets/images/SayNothing_PatrickRaddenKeefe.jpg").open,
   assetlabel:'SayNothing_PatrickRaddenKeefe.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 441,
   publication_date: 'First published 11/01/2018',
 
@@ -294,7 +294,7 @@ book19 = Book.create!(
   Yet he will turn out anything but.',
   image: Rails.root.join("app/assets/images/MaybeYouShouldTalkToSomeone_LoriGottlieb.jpg").open,
   assetlabel:'MaybeYouShouldTalkToSomeone_LoriGottlieb.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 415,
   publication_date: 'First published 04/02/2019'
 
@@ -311,7 +311,7 @@ book20 = Book.create!(
   begninning by secrecy, propaganda, and misinformation, has long remained in dispute.',
   image: Rails.root.join("app/assets/images/MidnightInChernobyl_AdamHigginbotham.jpg").open,
   assetlabel:'MidnightInChernobyl_AdamHigginbotham.jpg',
-  book_format: 'Hardcover',
+  book_format: 'eBook',
   page_number: 538,
   publication_date: 'First published 02/12/2019'
 
