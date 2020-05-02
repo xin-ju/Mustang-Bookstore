@@ -12,7 +12,11 @@ img {
 <div>
 
 <h1 style="font-size:75px"><%=book.title %></h1>
-<%= image_tag( book.assetlabel, height: 500) %><br></p>
+
+<% if book.assetlabel %>
+<%= image_tag( book.assetlabel, height: 600) %><br></p>
+<%end%>
+
 <div class="container">
 <%= book.overview %>
 </div>
@@ -45,9 +49,11 @@ img {
     
 
     <% end %>
+    
       <div><%= book.author%></div>
       <div><%= book.page_number %> pages </div>
       <div><%= book.book_format %></div>
+      <div><%= book.genre %></div>
       <div><%= book.publication_date %></div>
       <div>$<%= book.price %> (tax included in price)</div>
       

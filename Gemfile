@@ -62,3 +62,6 @@ gem 'annotate', group: :development
 
 # Authentication
 gem 'devise'
+
+#CreditCardValidations
+gem 'credit_card_validations'

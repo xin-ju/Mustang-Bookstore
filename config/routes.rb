@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'books/:id/edit', to: 'books#edit', as: 'edit_book' # edit
   patch 'books/:id', to: 'books#update' # update (as needed)
   put 'books/:id', to: 'books#update' # update (full replacement)
-  post 'review', to: 'books#leave_feedback', as: 'leave_feedback'
+  delete 'books/:id', to: 'books#destroy' # destroy
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   resources :wishlist_items
   
   get 'orders/', to: 'orders#index', as: 'orders' #index
-  #get 'orders', to: 'orders#new', as: 'new_order' #new - Old
   get 'orders/new', to: 'orders#new', as: 'new_order' #new - checkout to create order
   post 'orders', to: 'orders#create' # create
   
