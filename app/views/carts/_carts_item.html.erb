@@ -5,10 +5,28 @@ img {
 }
 h1 {text-align: center;}
 h2 {text-align: center;}
+h4 {text-align: center;}
+
+.sidenav {
+  margin-top: 100px; /* Stay away from top navbar */
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  background: #eee;
+  overflow-x: hidden;
+}
+
+.main {
+  margin-right: 120px; /* Same width as the sidebar + left position in px */
+  font-size: 16px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
 </style>
 </head>
 <body>
 <div>
+
 
 <!--Find me in app/views/carts/show.html.erb -->
 <div class="card-body">
@@ -21,19 +39,24 @@ h2 {text-align: center;}
 </div> 
 
 <% if current_cart.subtotal.zero? == false  %>
+<div class="main">
 <h1> My Cart</h1> 
-
-<div class="card-body">
+<div class="card mb-3">
  <% @cart_items.each do |item| %>
   <% if item.book.assetlabel %>
-    <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br></p> 
+    <!-- <hr class="solid"> --> 
+   <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= link_to image_tag(item.book.assetlabel, height: 250), book_path(item.book_id)%><br></p> 
+    </div> <!-- col-md-4 -->
   <%end%>
-   
-    <div class="container">
-       <h3><%= link_to item.book.title, book_path(item.book_id)%></h3>
-       <p>By <%= item.book.author %></p>
-       <h5><%= item.book.genre %> | <%= number_to_currency(item.book.price)%> </h5>
-    
+    <div class="col-md-8">
+      <div class="card-body">
+    <!-- <div class="container"-->
+       <h3 class="card-title"><%= link_to item.book.title, book_path(item.book_id)%></h3><!-- <h3><%= link_to item.book.title, book_path(item.book_id)%></h3> --> 
+       <p class="card-text">By <%= item.book.author %></p><!-- <p>By <%= item.book.author %></p> --> 
+       <h5 class="card-text"><small class="text-muted"><%= item.book.genre %> | <%= number_to_currency(item.book.price)%></small></h5><!-- <h5><%= item.book.genre %> | <%= number_to_currency(item.book.price)%> </h5> --> 
+ 
     
         <%= form_for item, remote: true do |f| %>
            <%= f.hidden_field :book_id, :value => item.book.id %>
@@ -42,17 +65,23 @@ h2 {text-align: center;}
         <%= link_to "Remove Item(s)", cart_item_path(item), method: :delete, remote: true%> 
        <% end %> <!-- end form -->
       <p>Subtotal: <%= number_to_currency(item.total) %></p> 
-      <br>
-    <%end%> <!-- each do loop -->
-   </div>
-</div>
-<div class="card-footer">  
+   <!-- </div>  container --> 
+      </div> <!-- card-body-->
+    </div> <!-- col-md-8-->
+   </div> <!-- col-md-4-->
+</div> <!-- row no-gutters-->
+<%end%> <!-- each do loop -->
+<!-- <hr class="solid"> -->
+</div> <!-- card-mb-3 -->
+</div> <!-- main -->
 
+<!-- Side navigation -->
+<div class="sidenav">
 <div class="card-header bg-light text-dark">
 <div class="pull-right" style="margin: 10px">
     <div class="pull-right" style="margin: 5px">
-
-      <br>
+      <h4> Order Summary </h4> 
+      <hr class="solid">
       <p>
          Subtotal: <b><%= number_to_currency(current_cart.subtotal)%></b>
       </p>
@@ -60,18 +89,18 @@ h2 {text-align: center;}
          Estimated Shipping: <b>Free</b>
       </p>
       <p>
-         Tax: <b>$0.00</b>
+         Tax (Included in Item Price): <b>$0.00</b>
       </p>
       <p>
          ____________________________
       </p>
-      <h3> Order Total: <%= number_to_currency(current_cart.subtotal) %></h3> 
+      <h5> Order Total: <%= number_to_currency(current_cart.subtotal) %></h5> 
       <%= link_to "Proceed to checkout", new_order_path, class: "btn btn-block btn-primary"%><br> 
    </div>
 </div>
 </div>
 <% end %>
-
+</div> <!-- sidebar -->
 
 <!-- <h3> Order Total: <%= number_to_currency(current_cart.subtotal) %></h3>  --> 
 
