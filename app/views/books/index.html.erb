@@ -1,5 +1,8 @@
 
-
+<%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%= f.input :title, input_html: {value: ""} %>   
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
 
 <p style="text-align:center"><% if current_user.try(:admin?)==true %>
        <em><%= link_to 'Add New Product', new_book_path %></em>
@@ -18,14 +21,14 @@
 </div>
 </div>
 <div class = "row">
-<% books.each do |book| %>
+<% @books.each do |book| %>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3">
 </div>
 <%end%>
 <br>
 </div>
 <div class = "row">
-<%books.each do |book|%>
+<%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
     <p style="color:black"><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>
@@ -55,14 +58,14 @@
 </div>
 </div>
 <div class = "row">
-<% books.each do |book| %>
+<% @books.each do |book| %>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3">
 </div>
 <%end%>
 <br>
 </div>
 <div class = "row">
-<%books.each do |book|%>
+<%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
     <p style="color:black"><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>

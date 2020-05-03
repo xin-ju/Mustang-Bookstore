@@ -62,3 +62,5 @@ gem 'annotate', group: :development
 
 # Authentication
 gem 'devise'
+
+gem "simple_form", "~> 5.0"

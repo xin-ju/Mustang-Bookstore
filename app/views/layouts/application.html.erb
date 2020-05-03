@@ -41,16 +41,7 @@
           <% end %>
         
        </ul>
-<ul style="list-style: none;">  
-  <% if user_signed_in? %>
-    <li><form class="form-inline my-2 my-lg-10">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-1" type="submit">Search</button>
-    </form>
- </li>
-<%else%>
-<%end%>
-</ul>
+
         <ul class="navbar-nav">
           <% if user_signed_in? %>
              <li class="nav-item <%= active_class(edit_user_registration_path) %>">
