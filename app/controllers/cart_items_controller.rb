@@ -14,6 +14,7 @@ class CartItemsController < ApplicationController
         @cart_item = @cart.cart_items.find(params[:id])
         @cart_item.update_attributes(cart_params)
         @cart_items = current_cart.cart_items
+        redirect_to carts_url
     end
 
     def destroy #Remove from Cart
@@ -21,6 +22,7 @@ class CartItemsController < ApplicationController
         @cart_item = @cart.cart_items.find(params[:id])
         @cart_item.destroy
         @cart_items = current_cart.cart_items
+        redirect_to carts_url
     end
 
 
