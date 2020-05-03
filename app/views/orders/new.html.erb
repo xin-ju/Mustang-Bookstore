@@ -5,7 +5,7 @@ img {
 }
 h1 {text-align: center;}
 h2 {text-align: center;}
-h4 {text-align: center;}
+/* h4 {text-align: center;} */
 
 .sidenav-ordersummary {
   margin-top: 100px; /* Stay away from top navbar */
@@ -23,6 +23,16 @@ h4 {text-align: center;}
   padding: 20px 20px;
 }
 
+.box {
+  width: 40px;
+  padding: 7px;
+  border: 0.2px solid grey;
+  margin: 5;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
 </style>
 </head>
 <body>
@@ -31,13 +41,15 @@ h4 {text-align: center;}
 
 <div class="main">
 <h1> Checkout</h1>
- <hr class="solid"> 
+<br>
+ <!-- <hr class="solid"> --> 
 <%= form_with model: @order, url: orders_path, method: :post, local: true, scope: :order do |f| %> 
-  <hr class="solid"> 
-  
-   <h2> Shipping Address</h2>
+
+<div class="card" style="width: 31rem; height: 11rem">
+  <div class="card-body"> 
+   <h3 class="card-title">Shipping Address</h3> 
    <% invalid = @order.errors.include?(:email) %> 
-    <div class="form-group"> <!-- class -->
+    <div class="form-group"> <!-- form group -->
     <%= f.label :Electronic_Delivery%><br>
     <%= f.email_field :email, class: "form-control #{'is-invalid' if invalid}" %>
     <% if invalid %>
@@ -45,12 +57,17 @@ h4 {text-align: center;}
           <% @order.errors.full_messages_for(:email).each do |error_message| %>
             <%= error_message %>.
           <% end %>
-        </div>
+        </div> <!-- invalid feedback -->
       <% end %>
-    </div> <!-- class -->
-  <hr class="solid"> 
+    </div> <!-- form group -->
+    </div> <!-- card-body-->
+</div> <!-- card style="width: 18rem;"-->
+     <!-- <hr class="solid"> --> 
+   <br>
 
-  <h2> Billing Information</h2>
+<div class="card" style="width: 31rem; height: 22.5rem">
+  <div class="card-body"> 
+  <h3 class="card-title">Billing Information</h3> 
   <% invalid = @order.errors.include?(:credit_card_number) %> 
   <div class="form-group"> <!-- class -->
     <%= f.label :card_number%><br>
@@ -60,14 +77,15 @@ h4 {text-align: center;}
           <% @order.errors.full_messages_for(:credit_card_number).each do |error_message| %>
             <%= error_message %>.
           <% end %>
-        </div>
+        </div> <!-- invalid feedback -->
       <% end %>
-  </div> <!-- class -->
-  
+  </div> <!-- form group -->
+
   <% invalid = @order.errors.include?(:exp_month) %> 
   <div class="form-group">
     <%= f.label :Expiration_date %><br>
     <%= f.select :exp_month, 1..12, class: "form-control #{'is-invalid' if invalid}"%>
+    <%= f.select :exp_year, Date.today.year.. 8.years.from_now.year %>
       <% if invalid %>
         <div class="invalid-feedback d-block">
           <% @order.errors.full_messages_for(:exp_month).each do |error_message| %>
@@ -75,7 +93,6 @@ h4 {text-align: center;}
           <% end %>
         </div>
       <% end %>
-    <%= f.select :exp_year, Date.today.year.. 8.years.from_now.year %>
     <!-- <%= f.month_field :exp_date, class: "form-group" %> --> 
   </div>
 
@@ -90,26 +107,42 @@ h4 {text-align: center;}
           <% end %> 
         </div>
       <% end %>
-  </div>
+  </div> <!-- form group -->
+ </div> <!-- card-body-->
+</div> <!-- card style="width: 18rem;"-->
+ <br>
 
-  <hr class="solid">
-
-  <div class="card-header bg-light text-dark">
-        <h2> Delivered Electronically </h2>
+<div class="card"> 
+  <div class="card-header"> 
+  <!-- <div class="card-header bg-light text-dark"> --> 
+    <h2 class="card-title">Delivered Electronically </h2> 
   </div>
   <div class="card-body">
     <%current_cart.cart_items.each do |item| %>
-        <%= link_to image_tag(item.book.assetlabel, height: 150)%><br></p> 
+     <div class="card mb-3" style="max-width: 540px; max-height: 250px; border: none;"> 
+      <div class="row no-gutters"> 
+        <div class="col-md-4"> 
+        <%= link_to image_tag(item.book.assetlabel, height: 195)%><br></p> 
+        </div> <!-- col-md-4-->
+      <div class="col-md-8"> 
+       <div class="card-body"> 
         <div class="container">
-          <h4><%= item.book.title%></h4>
-          <p>By <%= item.book.author %></p>
-          <h6><%= item.book.genre %> | <%= number_to_currency(item.book.price)%> </h6>
-          <p>Subtotal: <%= number_to_currency(item.total) %></p>
-        <br>
+          <h4 class="card-title"><%=item.book.title%></h4> 
+          <p class="card-text">By <%= item.book.author %></p> 
+          <h5 class="card-text"><small class="text-muted"><%= item.book.genre %> | <%= number_to_currency(item.book.price)%></small></h5> 
+          <div class= "box"><h5 class="card-text"><small class="text-muted"><%=item.quantity%></small></h5></div><p>Total: <%= number_to_currency(item.total) %></p>
         </div> <!-- container -->
-    <% end %> <!-- each do cart items-->
-  <div class="card-footer">
+       </div> <!-- card-body-->
+      </div> <!-- col-md-8-->
+      </div> <!-- "row no-gutters"--> 
+    </div> <!-- "card mb-3" style="max-width: 540px;"-->
+    <hr class="solid">
+   <% end %> <!-- each do cart items-->
+       <br> 
+  <%= link_to "Return to Cart", carts_path, class: "btn btn-block btn-primary"%>
+   <%= link_to "Keep Shopping", books_path, class: "btn btn-block btn-primary"%><br>
 </div> <!-- main -->
+
 
 <!-- Side navigation -->
 <div class="sidenav-ordersummary">
