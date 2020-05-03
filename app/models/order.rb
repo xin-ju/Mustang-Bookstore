@@ -14,7 +14,7 @@
 #
 class Order < ApplicationRecord
     has_many :order_items, dependent: :destroy
-    has_many :cart_items, dependent: :destroy
+    #has_many :cart_items, dependent: :destroy
 
     validates :email, presence: true
     validates :credit_card_number, presence: true
