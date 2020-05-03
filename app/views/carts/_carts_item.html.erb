@@ -3,7 +3,6 @@
 img {
   float: left; padding-right: 50px;
 }
-p {text-align: center;}
 h1 {text-align: center;}
 h2 {text-align: center;}
 </style>
@@ -17,20 +16,21 @@ h2 {text-align: center;}
     <br>
     <h2> Your Cart is empty. </h2> <br>
     <h2> Start Shopping and get free electronic delivery on all items</h2>
-    <%= link_to "Shop Now", books_path %><br> 
+    <%= link_to "Shop Now", books_path, class: "btn btn-block btn-primary"%><br> 
   <%end%>
 </div> 
 
 <% if current_cart.subtotal.zero? == false  %>
 <h1> My Cart</h1> 
+
 <div class="card-body">
  <% @cart_items.each do |item| %>
- <% if item.book.assetlabel %>
-     <hr class="solid">
+  <% if item.book.assetlabel %>
     <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br></p> 
-<%end%>
+  <%end%>
+   
     <div class="container">
-       <h2><%= link_to item.book.title, book_path(item.book_id)%></h2>
+       <h3><%= link_to item.book.title, book_path(item.book_id)%></h3>
        <p>By <%= item.book.author %></p>
        <h5><%= item.book.genre %> | <%= number_to_currency(item.book.price)%> </h5>
     
@@ -40,18 +40,18 @@ h2 {text-align: center;}
            <%= f.number_field :quantity, :value => item.quantity.to_i %>
            <%= f.submit "Update"%>
         <%= link_to "Remove Item(s)", cart_item_path(item), method: :delete, remote: true%> 
-       <% end %>
+       <% end %> <!-- end form -->
       <p>Subtotal: <%= number_to_currency(item.total) %></p> 
-    <br>
-    </div>
- <% end %>
-<div class="card-footer">
-
-
+      <br>
+    <%end%> <!-- each do loop -->
+   </div>
+</div>
+<div class="card-footer">  
 
 <div class="card-header bg-light text-dark">
-  <div class="pull-right" style="margin: 10px">
+<div class="pull-right" style="margin: 10px">
     <div class="pull-right" style="margin: 5px">
+
       <br>
       <p>
          Subtotal: <b><%= number_to_currency(current_cart.subtotal)%></b>
@@ -66,11 +66,12 @@ h2 {text-align: center;}
          ____________________________
       </p>
       <h3> Order Total: <%= number_to_currency(current_cart.subtotal) %></h3> 
-      <%= link_to "Proceed to checkout", new_order_path %><br> 
+      <%= link_to "Proceed to checkout", new_order_path, class: "btn btn-block btn-primary"%><br> 
    </div>
-  </div>
-</div> 
-<%end%>
+</div>
+</div>
+<% end %>
+
 
 <!-- <h3> Order Total: <%= number_to_currency(current_cart.subtotal) %></h3>  --> 
 
