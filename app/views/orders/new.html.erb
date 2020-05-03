@@ -16,25 +16,62 @@ img {
   <hr class="solid"> 
   
    <h2> Shipping Address</h2>
-    <div>
+   <% invalid = @order.errors.include?(:email) %> 
+    <div class="form-group"> <!-- class -->
     <%= f.label :Electronic_Delivery%><br>
-    <%= f.email_field :buyer_name%>
-  </div> 
+    <%= f.email_field :email, class: "form-control #{'is-invalid' if invalid}" %>
+    <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <% @order.errors.full_messages_for(:email).each do |error_message| %>
+            <%= error_message %>.
+          <% end %>
+        </div>
+      <% end %>
+    </div> <!-- class -->
   <hr class="solid"> 
 
   <h2> Billing Information</h2>
-  <div>
+  <% invalid = @order.errors.include?(:credit_card_number) %> 
+  <div class="form-group"> <!-- class -->
     <%= f.label :card_number%><br>
-    <%= f.text_field :credit_card_number%>
-  </div>
-  <div>
+    <%= f.text_field :credit_card_number, class: "form-control #{'is-invalid' if invalid}"%>
+      <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <% @order.errors.full_messages_for(:credit_card_number).each do |error_message| %>
+            <%= error_message %>.
+          <% end %>
+        </div>
+      <% end %>
+  </div> <!-- class -->
+  
+  <% invalid = @order.errors.include?(:exp_month) %> 
+  <div class="form-group">
     <%= f.label :Expiration_date %><br>
-    <%= f.month_field :exp_date%> 
+    <%= f.select :exp_month, 1..12, class: "form-control #{'is-invalid' if invalid}"%>
+      <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <% @order.errors.full_messages_for(:exp_month).each do |error_message| %>
+            <%= error_message %>.
+          <% end %>
+        </div>
+      <% end %>
+    <%= f.select :exp_year, Date.today.year.. 8.years.from_now.year %>
+    <!-- <%= f.month_field :exp_date, class: "form-group" %> --> 
   </div>
-  <div>
+
+  <% invalid = @order.errors.include?(:security_code) %> 
+  <div class="form-group">
     <%= f.label :Security_Code %><br>
-    <%= f.text_field :security_code%>
+    <%= f.text_field :security_code, class: "form-control #{'is-invalid' if invalid}"%>
+      <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <% @order.errors.full_messages_for(:security_code).each do |error_message| %>
+            <%= error_message %>.
+          <% end %>
+        </div>
+      <% end %>
   </div>
+
   <hr class="solid">
 
   <div class="card-header bg-light text-dark">
@@ -54,6 +91,6 @@ img {
   <div class="card-footer">
 
 
-  <%= f.submit "Place Order" %>
+  <%= f.submit "Place Order", class: "btn btn-block btn-primary"%>
 <% end %>
 

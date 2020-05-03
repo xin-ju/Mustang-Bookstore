@@ -64,3 +64,5 @@ gem 'annotate', group: :development
 gem 'devise'
 
 gem "simple_form", "~> 5.0"
+#CreditCardValidations
+gem 'credit_card_validations'

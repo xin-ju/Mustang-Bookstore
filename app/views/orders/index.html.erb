@@ -4,7 +4,7 @@
 <!-- Only display orders of that user not all previous orders in the database (add User has order association) --> 
 <% @orders.each do |order| %>
   <p>Credit Card Number: <%= order.credit_card_number %></p>
-  <!-- <p>Exp. Date: <%= order.exp_date %></p> --> 
+  <p>Exp. Date: <%= order.exp_month %>/<%= order.exp_year %></p>
 
   <p>Items: </p>  
   <ul>

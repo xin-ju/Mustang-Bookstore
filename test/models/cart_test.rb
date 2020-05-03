@@ -19,13 +19,13 @@ class CartTest < ActiveSupport::TestCase
       assert c.valid?, c.errors.full_messages.inspect
     end  
   end
-  test "is_empty presence not valid" do
-    c = carts(:one)
-    c.is_empty= nil
-    assert_not c.valid?
-    c.is_empty = ""
-    assert_not c.valid?
-  end
+  # test "is_empty presence not valid" do
+  #   c = carts(:one)
+  #   c.is_empty= nil
+  #   assert_not c.valid?
+  #   c.is_empty = ""
+  #   assert_not c.valid?
+  # end
 
 end
 

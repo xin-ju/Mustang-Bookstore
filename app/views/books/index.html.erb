@@ -4,7 +4,7 @@
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
 
-<p style="text-align:center"><% if current_user.try(:admin?)==true %>
+<p style="text-align:center"><% if current_user.try(:admin?)==true %>rai
        <em><%= link_to 'Add New Product', new_book_path %></em>
 </p>
 <%end%>
@@ -46,10 +46,8 @@
 </body>
 <%end%>
 
-
-<% if current_user.try(:admin?)==false %>
-
-<body style="background-color:white;">
+<% if current_user.try(:admin?)==false %> <!----If user is not admin-->
+<body style="background-color:white;"> <!----Body-->
 <div class = "page-header">
 <br>
 </div>
@@ -78,5 +76,5 @@
     </div>
     <%end%>
     </div>
-</body>
-<%end%>
+</body>  <!----Body-->
+<%end%> <!----If user is not admin-->
