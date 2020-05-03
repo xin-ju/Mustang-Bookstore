@@ -37,6 +37,13 @@ div.field_with_errors {
   display: inline;
 }
 
+
+#flash-message-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
 .alert-dismissible {
   padding-left: $close-font-size + $alert-padding-x * 2;
 }

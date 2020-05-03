@@ -5,7 +5,8 @@
 #  id                 :bigint           not null, primary key
 #  credit_card_number :string
 #  email              :string
-#  exp_date           :date
+#  exp_month          :integer
+#  exp_year           :integer
 #  security_code      :integer
 #  total              :float
 #  created_at         :datetime         not null
@@ -13,19 +14,19 @@
 #
 
 one:
-  order_number: 1
-  buyer_name: MyString
-  credit_card_number: 1
-  order_date: MyString
-  shipping_info: MyString
-  billing_info: MyString
+  credit_card_number: MyString
+  email: MyString
+  #exp_date: MyDate
+  exp_month: 1
+  exp_year: 0000
+  security_code: 1
   total: 1.5
 
 two:
-  order_number: 1
-  buyer_name: MyString
-  credit_card_number: 1
-  order_date: MyString
-  shipping_info: MyString
-  billing_info: MyString
+  credit_card_number: MyString
+  email: MyString
+  #exp_date: MyDate
+  exp_month: 1
+  exp_year: 0000
+  security_code: 1
   total: 1.5

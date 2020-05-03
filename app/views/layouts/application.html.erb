@@ -19,8 +19,6 @@
 
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-           
-   
           <% if current_user.try(:admin?) %>
              <li class="nav-item <%= active_class(books_path) %>">
               <%= link_to "Book Inventory", books_path, class: 'nav-link' %>
@@ -41,16 +39,7 @@
           <% end %>
         
        </ul>
-<ul style="list-style: none;">  
-  <% if user_signed_in? %>
-    <li><form class="form-inline my-2 my-lg-10">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-1" type="submit">Search</button>
-    </form>
- </li>
-<%else%>
-<%end%>
-</ul>
+
         <ul class="navbar-nav">
           <% if user_signed_in? %>
              <li class="nav-item <%= active_class(edit_user_registration_path) %>">
@@ -71,19 +60,25 @@
         
       </div>
     </nav>
-    <ul>
-
+    <ul> 
+ 
+ <div id="flash-message-wrapper">
     <% flash.each do |key, message| %>
-      <p><%= message %></p>
+        <div class="alert <%= flash_class(key) %> alert-dismissible fade show text-center" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> 
+      </div>
     <% end %>
-
+</div>
 
 
  <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-22">
         
-          <%= yield %>
+          <%= yield %> 
         </div>
       </div>
     </div>

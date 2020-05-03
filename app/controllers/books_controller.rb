@@ -2,11 +2,16 @@ class BooksController < ApplicationController
 
   before_action :authenticate_user!
   def index
-    books = Book.all
-    respond_to do |format|
-      format.html { render :index, locals: { books: books } }
-    end
+    @books = Book.all
+    @search = params["search"]
+    if @search.present?
+        @title = @search["title"]
+        @books = Book.where("title ILIKE ?", "%#{@title}%")
+    
+      
   end
+    end
+  
 
   def show
     book = Book.find(params[:id])

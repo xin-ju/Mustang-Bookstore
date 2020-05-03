@@ -12,8 +12,7 @@ class OrdersController < ApplicationController
     end
     
     def new
-        @order = Order.new
-
+        @order = Order.new 
         respond_to do |format|
           format.html { render :new, locals: { order: @order } }
         end
@@ -32,6 +31,9 @@ class OrdersController < ApplicationController
               if @order.save
                   # success message
                   flash[:success] = "Order successfully created"
+                  #destroy current cart session
+                  Cart.destroy(session[:cart_id])
+                  session[:cart_id] = nil
                   # redirect to index
                   redirect_to orders_url
               else
@@ -42,15 +44,11 @@ class OrdersController < ApplicationController
               end
           end
       end
-
-        Cart.destroy(session[:cart_id])
-        session[:cart_id] = nil
-        #redirect_to root_path
       end
       
     private
         def order_params
-          params.require(:order).permit(:credit_card_number, :exp_date, :security_code, :total, :created_at)
+          params.require(:order).permit(:email, :credit_card_number, :exp_month, :exp_year, :security_code, :total, :created_at)
         end
 
 
