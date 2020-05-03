@@ -3,6 +3,25 @@
 img {
   float: left; padding-right: 50px;
 }
+h1 {text-align: center;}
+h2 {text-align: center;}
+h4 {text-align: center;}
+
+.sidenav {
+  margin-top: 100px; /* Stay away from top navbar */
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  right: 40px; /* side bar to the right of screen */
+  background: #eee;
+  overflow-x: hidden;
+}
+
+.main {
+  margin-right: 120px; /* Same width as the sidebar + right position in px */
+  font-size: 16px; /* Increased text to enable scrolling */
+  padding: 20px 20px;
+}
 
 </style>
 </head>
@@ -67,7 +86,7 @@ img {
         <div class="invalid-feedback d-block">
           <% @order.errors.full_messages_for(:security_code).each do |error_message| %>
             <%= error_message %>.
-          <% end %>
+          <% end %> 
         </div>
       <% end %>
   </div>
@@ -87,10 +106,32 @@ img {
           <p>Subtotal: <%= number_to_currency(item.total) %></p>
         <br>
         </div> <!-- container -->
-    <% end %> 
+    <% end %> <!-- each do cart items-->
   <div class="card-footer">
-
-
-  <%= f.submit "Place Order", class: "btn btn-block btn-primary"%>
 <% end %>
 
+<!-- Side navigation -->
+<div class="sidenav">
+<div class="card-header bg-light text-dark">
+<div class="pull-right" style="margin: 10px">
+    <div class="pull-right" style="margin: 5px">
+      <h4> Order Summary </h4> 
+      <hr class="solid">
+      <p>
+         Subtotal: <b><%= number_to_currency(current_cart.subtotal)%></b>
+      </p>
+      <p>
+         Estimated Shipping: <b>Free</b>
+      </p>
+      <p>
+         Tax (Included in Item Price): <b>$0.00</b>
+      </p>
+      <p>
+         ____________________________
+      </p>
+      <h5> Order Total: <%= number_to_currency(current_cart.subtotal) %></h5> 
+      <%= link_to "Place Order", class: "btn btn-block btn-primary" %><br> 
+   </div>
+</div>
+</div>
+</div> <!-- sidebar -->
