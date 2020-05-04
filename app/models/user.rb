@@ -35,6 +35,8 @@ class User < ApplicationRecord
 
   has_one :cart
  # has_one :wishlist
+  has_many :orders
+
 
   
 

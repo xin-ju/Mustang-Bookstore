@@ -4,52 +4,62 @@ class OrdersController < ApplicationController
       @orders = Order.all
       respond_to do |format|
         format.html {render :index, locals: { orders: @orders } }
+      end
     end
-  end
     
     def show
-        @order = Order.find(params[:id])
+      @order = Order.find(params[:id])
     end
     
     def new
-        @order = Order.new 
-        respond_to do |format|
-          format.html { render :new, locals: { order: @order } }
-        end
+      @order = Order.new 
+      respond_to do |format|
+        format.html { render :new, locals: { order: @order } }
+      end
     end
 
     def create
-        @order = Order.new(order_params)
-        current_cart.cart_items.each do |item|   #@current_cart
-          @order.cart_items << item
-          item.cart_id = nil
-        end
-        @order.save
+      @order = Order.new(order_params)
+      current_cart.cart_items.each do |item|   #@current_cart
+        @order.cart_items << item
+        item.cart_id = nil
+      end
+      @order.save
 
-        respond_to do |format|
-          format.html do
-              if @order.save
-                  # success message
-                  flash[:success] = "Order successfully created"
-                  #destroy current cart session
-                  Cart.destroy(session[:cart_id])
-                  session[:cart_id] = nil
-                  # redirect to index
-                  redirect_to orders_url
-              else
-                  # error message
-                  flash.now[:error] = "Error: Order could not be created"
-                  # render new
-                  render :new, locals: { order: @order }
-              end
+      respond_to do |format|
+        format.html do
+          if @order.save
+            # success message
+            flash[:success] = "Order successfully created"
+            #destroy current cart session
+            Cart.destroy(session[:cart_id])
+            session[:cart_id] = nil
+            # redirect to index
+            redirect_to orders_url
+          else
+            # error message
+            flash.now[:error] = "Error: Order could not be created"
+            # render new
+            render :new, locals: { order: @order }
           end
+        end
       end
+    end
+
+    def history
+      @user_orders = Order.where(user_id: current_user.id)
+      respond_to do |format|
+        format.html {render :history, locals: { user_orders: @user_orders } }
       end
+    end
+    
+
+
       
     private
-        def order_params
-          params.require(:order).permit(:email, :credit_card_number, :exp_month, :exp_year, :security_code, :total, :created_at)
-        end
+      def order_params
+        params.require(:order).permit(:email, :credit_card_number, :exp_month, :exp_year, :security_code, :total, :created_at)
+      end
 
 
 end

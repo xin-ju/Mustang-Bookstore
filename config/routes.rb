@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'orders/', to: 'orders#index', as: 'orders' #index
   get 'orders/new', to: 'orders#new', as: 'new_order' #new - checkout to create order
   post 'orders', to: 'orders#create' # create
+  get 'orders/history', to: 'orders#history', as: 'order_history'
   
 
 

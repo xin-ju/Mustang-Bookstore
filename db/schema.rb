@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_184703) do
+ActiveRecord::Schema.define(version: 2020_05_04_002507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_05_02_184703) do
     t.string "email"
     t.integer "exp_month"
     t.integer "exp_year"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_05_02_184703) do
 
   add_foreign_key "cart_items", "books"
   add_foreign_key "cart_items", "orders"
+  add_foreign_key "orders", "users"
   add_foreign_key "wishlist_items", "books"
   add_foreign_key "wishlist_items", "wishlists"
 end

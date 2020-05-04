@@ -11,11 +11,19 @@
 #  total              :float
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  user_id            :bigint
+#
+# Indexes
+#
+#  index_orders_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 class Order < ApplicationRecord
-    has_many :order_items, dependent: :destroy
-    #has_many :cart_items, dependent: :destroy
-
+    has_many :cart_items, dependent: :destroy
+    belongs_to :user
     validates :email, presence: true
     validates :credit_card_number, presence: true
     #validates :exp_date, presence: true
