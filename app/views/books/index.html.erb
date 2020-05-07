@@ -1,11 +1,11 @@
 
 
-
-<h3>Filter by: </h3>
-<%= form_tag(books_path, method: "get") do %>
-    <%= select_tag "genre", options_from_collection_for_select(Book.all.to_a.uniq{ |o| o.genre}, :genre, :genre), prompt: 'Genre'%>
-    <input type="submit" value="Submit">
-<% end %> <!-- end of form -->
+<br>
+    <h4>Filter by:</h4>
+    <%= form_tag(books_path, method: "get") do %>
+        <%= select_tag "genre", options_from_collection_for_select(Book.all.to_a.uniq{ |o| o.genre}, :genre, :genre), prompt: 'Genre'%>
+        <input type="submit" value="Submit">
+    <% end %> <!-- end of form -->
 
 
 
@@ -75,7 +75,7 @@
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
-    <h6>$<%= book.price %></h6>
+    <h6><%= number_to_currency(book.price) %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <br>
     <br>
