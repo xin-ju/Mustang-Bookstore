@@ -66,3 +66,5 @@ gem 'devise'
 gem "simple_form", "~> 5.0"
 #CreditCardValidations
 gem 'credit_card_validations'
+
+gem "acts-as-taggable-on", "~> 6.5"

@@ -48,6 +48,11 @@
      <%= f.text_field :rating %>
     </div>
 
+    <div>
+     <%= f.label "Book Photo"%><br>
+     <%= f.file_field :avatar%>
+    </div>
+
     <%= f.submit 'Update Product' %>
 
 <% end %>

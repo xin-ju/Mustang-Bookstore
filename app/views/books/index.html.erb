@@ -5,6 +5,9 @@
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
 
+
+
+
 <p style="text-align:center"><% if current_user.try(:admin?)==true %>
        <em><%= link_to 'Add New Product', new_book_path %></em>
 </p>
@@ -35,6 +38,9 @@
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
+<% if book.avatar.attached? %>
+ <image src="<%=(url_for(book.avatar))%>" width="120" height="200">
+ <%end%>
     <h6>$<%= book.price %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <%= link_to '🔨', edit_book_path(book)  %>
@@ -70,6 +76,9 @@
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
+<% if book.avatar.attached? %>
+ <image src="<%=(url_for(book.avatar))%>" width="120" height="200">
+ <%end%>
     <h6>$<%= book.price %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <br>
