@@ -22,7 +22,7 @@ class BooksController < ApplicationController
         @average_review = @book.reviews.average(:rating).round(2)
       end
       respond_to do |format|
-        format.html { render :show, locals: { @book: @book } }
+        format.html { render :show, locals: { book: @book } }
       end
     end
   
