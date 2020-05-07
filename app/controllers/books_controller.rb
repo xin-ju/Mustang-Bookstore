@@ -7,17 +7,10 @@ class BooksController < ApplicationController
     @books = Book.filter(params[:genre])
 
     @search = params["search"]
-    #@filter = params["filter"] #*******
-    #@dropdown = Book.select(:genre).distinct 
     if @search.present?
         @title = @search["title"]
         @books = Book.where("title ILIKE ?", "%#{@title}%")
-    #elsif @filter.present? #**********
-        #@genre = @filter["genre"]
-        #@books = Book.where("genre ILIKE ?", "%#{@genre}%")
        
-
-
     end
   end
 

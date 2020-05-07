@@ -32,10 +32,9 @@ class Book < ApplicationRecord
 
 
     def self.filter(filter)
-        if filter
+        if filter and not filter.empty?
             @books = Book.all
-            @books = @books.where(genre: :genre)
-            #@books = @books.where(genre: filter[:":genre"][","])
+            @books = @books.where(genre: filter)
 
             #byebug
             return @books

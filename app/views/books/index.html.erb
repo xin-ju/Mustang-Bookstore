@@ -1,33 +1,11 @@
 
-<!-- <%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
-  <%= f.input :title, input_html: {value: ""} %>   
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %> --> 
 
-<!---------------------------------------- Filter Form -------------------------------------------------------->
-<%= simple_form_for :filter, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %> 
-    <%= f.input :genre, input_html: {value: "genre"} %>
-    <%= f.submit "Filter", class: "btn btn-primary" %>
-<% end %> <!-- end of form -->
-
-
-<%= simple_form_for :filter, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %> 
-    <%= select_tag(:genre, options_for_select(['Mystery', 'Classic', 'Sci-Fi & Fantasy'])) %>
-    <%= f.submit "Filter", class: "btn btn-primary" %>
-<% end %> <!-- end of form -->
-<!---------------------------------------- End Filter Form ----------------------------------------------------->
-
- <!-- <%= @dropdown %> --> 
- <!-- <%= @dropdown = Book.select(:genre).distinct %> --> 
- <!-- <%= debug @dropdown %> --> 
 
 <h3>Filter by: </h3>
 <%= form_tag(books_path, method: "get") do %>
-    <%= collection_select( :genre, :genre, Book.all, :genre, :genre, {}, {:multiple => false} ) %>
+    <%= select_tag "genre", options_from_collection_for_select(Book.all.to_a.uniq{ |o| o.genre}, :genre, :genre), prompt: 'Genre'%>
     <input type="submit" value="Submit">
 <% end %> <!-- end of form -->
-
-
 
 
 
@@ -62,7 +40,7 @@
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
-    <h6>$<%= book.price %></h6>
+    <h6><%= number_to_currency(book.price) %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <%= link_to '🔨', edit_book_path(book)  %>
     <%= link_to '🗑', book_path(book), method: :delete %>
