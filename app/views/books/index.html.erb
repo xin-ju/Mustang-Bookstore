@@ -46,7 +46,7 @@
 <% if book.avatar.attached? %>
  <image src="<%=(url_for(book.avatar))%>" width="120" height="200">
  <%end%>
-    <h6>$<%= book.price %></h6>
+   
     <h6><%= number_to_currency(book.price) %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <%= link_to '🔨', edit_book_path(book)  %>
