@@ -34,7 +34,8 @@ class Book < ApplicationRecord
     def self.filter(filter)
         if filter
             @books = Book.all
-            @books = @books.where(genre: filter[:":genre"][","])
+            @books = @books.where(genre: :genre)
+            #@books = @books.where(genre: filter[:":genre"][","])
 
             #byebug
             return @books

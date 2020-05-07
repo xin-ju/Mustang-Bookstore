@@ -23,15 +23,11 @@
 
 <h3>Filter by: </h3>
 <%= form_tag(books_path, method: "get") do %>
-<select name = book[:genre], class = "form-control">
-    <option value = 'Genre'>-Genre-</option>
-    <option value = 'Mystery'>-Mystery-</option>
-    <option value = 'Classic'>-Classic-</option>
-    <option value = 'Sci-Fi & Fantasy'>-Sci-Fi & Fantasy-</option>
-    <option value = 'Nonfiction'>-Nonfiction-</option>
-</select>
+    <%= collection_select( :genre, :genre, Book.all, :genre, :genre, {}, {:multiple => false} ) %>
     <input type="submit" value="Submit">
 <% end %> <!-- end of form -->
+
+
 
 
 
