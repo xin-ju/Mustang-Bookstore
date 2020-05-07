@@ -3,6 +3,9 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   def index
     @books = Book.all
+
+    @books = Book.filter(params[:genre])
+
     @search = params["search"]
  
     if @search.present?
@@ -11,7 +14,7 @@ class BooksController < ApplicationController
     
     end
 end
-
+       
   def show
     book = Book.find(params[:id])
     @cart_item = current_cart.cart_items.new
