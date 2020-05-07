@@ -47,9 +47,16 @@ h4 {text-align: center;}
   <% if item.book.assetlabel %>
    <div class="row no-gutters"> 
     <div class="col-md-4"> 
-      <%= link_to image_tag(item.book.assetlabel, height: 250), book_path(item.book_id)%><br></p> 
+      <%= link_to image_tag(item.book.assetlabel, width: 200, height: 250), book_path(item.book_id)%><br></p> 
     </div> <!-- col-md-4-->
   <%end%>
+  <div class="card mb-3" style="max-width: 540px; max-height: 250px; border: none;"> 
+  <% if item.book.avatar.attached? %>
+  <div class="row no-gutters"> 
+  <div class="col-md-4"> 
+ <image src="<%=(url_for(item.book.avatar))%>" width="200" height="250">
+ </div> <!-- col-md-4-->
+ <%end%>
     <div class="col-md-8"> 
       <div class="card-body"> 
     <div class="container">

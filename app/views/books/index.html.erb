@@ -1,3 +1,7 @@
+<style>
+    p { color: 	#323232; }
+  </style>
+
 
 <%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
 
@@ -34,7 +38,7 @@
 <div class = "row">
 <%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
-    <p style="color:black"><b><i><%= book.title %></i></b></p>
+    <p><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
@@ -72,7 +76,7 @@
 <div class = "row">
 <%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
-    <p style="color:black"><b><i><%= book.title %></i></b></p>
+    <p><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>

@@ -15,6 +15,9 @@ img {
 <% if item.book.assetlabel %>
     <%= image_tag(item.book.assetlabel, height: 200) %><br></p>
 <%end%>
+<% if item.book.avatar.attached? %>
+  <image src="<%=(url_for(item.book.avatar))%>" width="200" height="250">
+ <%end%>
     <div class="container">
         <h2><%= item.book.title %></h2>
         <p>By <%= item.book.author %></p>

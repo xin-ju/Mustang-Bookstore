@@ -10,8 +10,11 @@
   <ul>
     <% order.cart_items.each do|item|%> 
     <% if item.book.assetlabel %>
-    <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br>
+    <%= link_to image_tag(item.book.assetlabel, width: 175, height: 250), book_path(item.book_id)%><br>
     <%end%>
+    <% if item.book.avatar.attached? %>
+  <image src="<%=(url_for(item.book.avatar))%>" width="175" height="250">
+ <%end%>
     <div class="container">
        <h2><%= link_to item.book.title, book_path(item.book_id)%></h2>
        <p>By <%= item.book.author %></p>
@@ -22,3 +25,4 @@
   </ul> 
   -----------------------------------------------------
 <% end %>
+
