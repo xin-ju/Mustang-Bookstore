@@ -2,16 +2,6 @@
     p { color: 	#323232; }
   </style>
 
-
-<%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
-
-<%= f.input :title, input_html: {value: ""},inline_label: 'title', label: false %>
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
-
-
-
-
 <p style="text-align:center"><% if current_user.try(:admin?)==true %>
        <em><%= link_to 'Add New Product', new_book_path %></em>
 </p>
