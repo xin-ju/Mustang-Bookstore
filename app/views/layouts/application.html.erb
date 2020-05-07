@@ -41,19 +41,10 @@
             <li class="nav-item <%= active_class(root_path) %>">
               <%= link_to 'My Orders', orders_path, class: 'nav-link' %>
             </li>
-<<<<<<< HEAD
-<%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
-
-<%= f.input :title, input_html: {value: ""},inline_label: 'title', label: false %>
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
-
-=======
             <%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
-                <%= f.input :title, input_html: {value: ""} %>   
+                <%= f.input :title, input_html: {value: ""} ,inline_label: 'title', label: false %>  
                 <%= f.submit "Search", class: "btn btn-primary" %>
             <% end %> 
->>>>>>> 4da12674d900d3cb49a6f01cca5f97bf028b7e51
           <% end %>
         
        </ul>
