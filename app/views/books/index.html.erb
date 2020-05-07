@@ -1,10 +1,42 @@
 
-<%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
+<!-- <%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
   <%= f.input :title, input_html: {value: ""} %>   
   <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
+<% end %> --> 
 
-<p style="text-align:center"><% if current_user.try(:admin?)==true %>rai
+<!---------------------------------------- Filter Form -------------------------------------------------------->
+<%= simple_form_for :filter, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %> 
+    <%= f.input :genre, input_html: {value: "genre"} %>
+    <%= f.submit "Filter", class: "btn btn-primary" %>
+<% end %> <!-- end of form -->
+
+
+<%= simple_form_for :filter, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %> 
+    <%= select_tag(:genre, options_for_select(['Mystery', 'Classic', 'Sci-Fi & Fantasy'])) %>
+    <%= f.submit "Filter", class: "btn btn-primary" %>
+<% end %> <!-- end of form -->
+<!---------------------------------------- End Filter Form ----------------------------------------------------->
+
+ <!-- <%= @dropdown %> --> 
+ <!-- <%= @dropdown = Book.select(:genre).distinct %> --> 
+ <!-- <%= debug @dropdown %> --> 
+
+<h3>Filter by: </h3>
+<%= form_tag(books_path, method: "get") do %>
+<select name = book[:genre], class = "form-control">
+    <option value = 'Genre'>-Genre-</option>
+    <option value = 'Mystery'>-Mystery-</option>
+    <option value = 'Classic'>-Classic-</option>
+    <option value = 'Sci-Fi & Fantasy'>-Sci-Fi & Fantasy-</option>
+    <option value = 'Nonfiction'>-Nonfiction-</option>
+</select>
+    <input type="submit" value="Submit">
+<% end %> <!-- end of form -->
+
+
+
+
+<p style="text-align:center"><% if current_user.try(:admin?)==true %>
        <em><%= link_to 'Add New Product', new_book_path %></em>
 </p>
 <%end%>

@@ -3,14 +3,24 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   def index
     @books = Book.all
+
+    @books = Book.filter(params[:genre])
+
     @search = params["search"]
+    #@filter = params["filter"] #*******
+    #@dropdown = Book.select(:genre).distinct 
     if @search.present?
         @title = @search["title"]
         @books = Book.where("title ILIKE ?", "%#{@title}%")
-    
-      
-  end
+    #elsif @filter.present? #**********
+        #@genre = @filter["genre"]
+        #@books = Book.where("genre ILIKE ?", "%#{@genre}%")
+       
+
+
     end
+  end
+
   
 
   def show
