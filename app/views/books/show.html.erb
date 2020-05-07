@@ -49,7 +49,8 @@ img {
     
 
     <% end %>
-    
+
+
       <div><%= book.author%></div>
       <div><%= book.page_number %> pages </div>
       <div><%= book.book_format %></div>
@@ -61,6 +62,30 @@ img {
 </td>
 <br>
 
+<div class="row">
+
+    <div class="col-md-3">
+  
+      <div class="reviews">
+  
+        <!-- Where the reviews/ratings will go -->
+        <h1>Reviews</h1>
+        <%= render @book.reviews %>
+  
+        <div>
+          <%= link_to "Add Review", new_book_review_path(@book), class: "btn-custom" %>
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  </div>
+  <div>
+  <h2 class="avg-rating">Average Rating</h2>
+			<div class="average-review-rating" data-score=<%= @average_review %>></div>
+			<span class="number-of-reviews">Based on <%= @book.reviews.count %> reviews</span>
+</div>
 </div>
 </body>
 </html>

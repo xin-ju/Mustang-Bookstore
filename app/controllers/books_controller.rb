@@ -12,16 +12,21 @@ class BooksController < ApplicationController
   end
     end
   
-
-  def show
-    book = Book.find(params[:id])
-    @cart_item = current_cart.cart_items.new
-    @wishlist_item = current_wishlist.wishlist_items.new
-    respond_to do |format|
-      format.html { render :show, locals: { book: book } }
+    def show
+     @book = Book.find(params[:id])
+      @cart_item = current_cart.cart_items.new
+      @wishlist_item = current_wishlist.wishlist_items.new
+      if @book.reviews.blank?
+        @average_review = 0
+      else
+        @average_review = @book.reviews.average(:rating).round(2)
+      end
+      respond_to do |format|
+        format.html { render :show, locals: { @book: @book } }
+      end
     end
-  end
-
+  
+  
   def new
     book = Book.new
     respond_to do |format|

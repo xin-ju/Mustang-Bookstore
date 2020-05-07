@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
-
   devise_for :users
+  
   root to: redirect('/home', status: 302)
   get 'home', to: 'static_pages#home', as: 'home'
-  get 'books', to: 'books#index', as: 'books' # index
-  get 'books/new', to: 'books#new', as: 'new_book' # new
-  post 'books', to: 'books#create' # create
-  get 'books/:id', to: 'books#show', as: 'book' # show
-  get 'books/:id/edit', to: 'books#edit', as: 'edit_book' # edit
-  patch 'books/:id', to: 'books#update' # update (as needed)
-  put 'books/:id', to: 'books#update' # update (full replacement)
-  delete 'books/:id', to: 'books#destroy' # destroy
+ # get 'books', to: 'books#index', as: 'books' # index
+  #get 'books/new', to: 'books#new', as: 'new_book' # new
+  #post 'books', to: 'books#create' # create
+  #get 'books/:id', to: 'books#show', as: 'book' # show
+  #get 'books/:id/edit', to: 'books#edit', as: 'edit_book' # edit
+  #patch 'books/:id', to: 'books#update' # update (as needed)
+  #put 'books/:id', to: 'books#update' # update (full replacement)
+  #delete 'books/:id', to: 'books#destroy' # destroy
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   get 'orders/new', to: 'orders#new', as: 'new_order' #new - checkout to create order
   post 'orders', to: 'orders#create' # create
   
-
+  resources :books do
+    resources :reviews
+  end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
