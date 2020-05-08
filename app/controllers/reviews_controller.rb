@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
 
   def create
     review = Review.new(params.require(:review).permit(:rating, :comment))
+    review.book = book
+    review.user = current_user
     respond_to do |format|
       format.html do
         # if question saves

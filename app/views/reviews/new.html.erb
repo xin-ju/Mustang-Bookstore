@@ -4,9 +4,9 @@
 
 		<h1>New Review</h1>
 
-		<%= form_with model: review, url: new_review_path, method: :post, local: true, scope: :reviews do |f| %>
+		<%= form_with model: review, url: new_review_path, method: :post, local: true, scope: :review do |f| %>
 			<div>
-              <%= f.label :review %><br>
+              <%= f.label :comment %><br>
               <%= f.text_area  :comment, size: "27x7" %>
 			</div>
 			

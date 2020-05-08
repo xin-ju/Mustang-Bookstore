@@ -100,14 +100,14 @@ end
 
 
 
-  def review
+  def contact
     respond_to do |format|
-      format.html { render :review, locals: { feedback: {} } }
+      format.html { render :contact, locals: { feedback: {} } }
     end
   end
   
   def leave_feedback
-    required = [:name, :email, :reply, :feedback_type, :message]
+    required = [:username, :message]
     form_complete = true
     required.each do |f|
       if params.has_key? f and not params[f].blank?
@@ -117,7 +117,7 @@ end
       end
     end
     if form_complete
-      form_status_msg = 'Thank you for your feedback!'
+      form_status_msg = 'Thank you for your review!'
     else
       form_status_msg = 'Please fill in all the remaining form fields and resubmit.'
     end

@@ -58,6 +58,10 @@ img {
       <div><%= book.publication_date %></div>
       <div>$<%= book.price %> (tax included in price)</div>
       
+
+      <div>
+				<%= link_to "Add a New Review", new_review_path, class: "btn-custom" %>
+			</div>
      
 </td>
 <br>
@@ -65,24 +69,3 @@ img {
 </body>
 
 </html>
-<br>
-<div class="row">
-
-    <div class="col-md-3">
-  
-      <div class="reviews">
-  
-        <!-- Where the reviews/ratings will go -->
-        <h1>Reviews</h1>
-  
-        
-        <%= link_to 'Add a New Review', new_review_path %>
-        
-  
-      </div>
-  
-    </div>
-  
-  </div>
- 
- 

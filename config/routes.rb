@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   put 'books/:id', to: 'books#update' # update (full replacement)
   delete 'books/:id', to: 'books#destroy' # destroy
 
-  get 'books/:id/reviews/new', to: 'reviews#new', as: 'new_review' #new
-  post 'books/:id/reviews', to: 'reviews#create' #create
+  get 'books/:id/reviews/new', to: 'reviews#new', as: 'new_review' # new
+  post 'books/:id//reviews/new', to: 'reviews#create' # create
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
