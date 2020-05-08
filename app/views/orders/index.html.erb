@@ -1,24 +1,49 @@
+<head>
+<style>
+img {
+  float: left; padding-right: 50px;
+}
+h2 {text-align: center;}
+h5 {text-align: center;}
+
+.main {
+  margin-right: 120px;
+  font-size: 16px;
+  padding: 20px 20px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="main">
 <h2>All Orders</h2>
-
-
+  <hr class="solid">
 <!-- Only display orders of that user not all previous orders in the database (add User has order association) --> 
-<% @orders.each do |order| %>
-  <p>Credit Card Number: <%= order.credit_card_number %></p>
-  <p>Exp. Date: <%= order.exp_month %>/<%= order.exp_year %></p>
-
+  <% @orders.each do |order| %> 
+  <div class="card mb-3" style="max-width: 540px; max-height: 250px; border: none;">
   <p>Items: </p>  
   <ul>
     <% order.cart_items.each do|item|%> 
     <% if item.book.assetlabel %>
-    <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br>
+      <div class="row no-gutters">
+        <div class="col-md-4">
+        <%= link_to image_tag(item.book.assetlabel, height: 200), book_path(item.book_id)%><br>
+      </div>
     <%end%>
-    <div class="container">
-       <h2><%= link_to item.book.title, book_path(item.book_id)%></h2>
-       <p>By <%= item.book.author %></p>
-       <h5><%= item.book.genre %> | <%= number_to_currency(item.book.price)%> </h5>
+      <div class="col-md-8">
+        <div class="card-body">
+      <div class="container">
+        <h2 class="card-title"><%= link_to item.book.title, book_path(item.book_id)%></h2>
+        <p class="card-text">By <%= item.book.author %></p>
+        <h5 class="card-text"><small class="text-muted"><%= item.book.genre %> | <%= number_to_currency(item.book.price)%></small></h5>
     <!-- <li>Item Price: <%=item.total %></li> --> 
-    </div>
     <% end %> 
   </ul> 
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
   -----------------------------------------------------
 <% end %>
