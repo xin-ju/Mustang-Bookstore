@@ -1,9 +1,24 @@
+<head>
+<style>
+img {
+    float: left; padding-right: 50px;
+}
+h2 {text-align: center;}
+
+.main {
+    margin-right: 120px;
+    font-size: 16px;
+    padding: 20px 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="main">
 <h2>Order History</h2>
 
-<% @user_orders.each do |order| %>
-    <p>Credit Card Number: <%= order.credit_card_number %></p>
-    <p>Exp. Date: <%= order.exp_month %>/<%= order.exp_year %></p>
-
+<% current_user.orders.each do |order| %>
+    
     <p>Items: </p>
     <ul>
         <% order.cart_items.each do |item| %>
