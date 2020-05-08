@@ -13,16 +13,6 @@ class BooksController < ApplicationController
         @books = Book.where("title ILIKE ?", "%#{@title}%")
     
     end
-<<<<<<< HEAD
-  
-    def show
-     @book = Book.find(params[:id])
-      @cart_item = current_cart.cart_items.new
-      @wishlist_item = current_wishlist.wishlist_items.new
-      respond_to do |format|
-        format.html { render :show, locals: { book: @book } }
-      end
-=======
 end
        
   def show
@@ -31,7 +21,6 @@ end
     @wishlist_item = current_wishlist.wishlist_items.new
     respond_to do |format|
       format.html { render :show, locals: { book: book } }
->>>>>>> cd9d1f9760dbdf55253cebaeded4fd3247798fe2
     end
   
   

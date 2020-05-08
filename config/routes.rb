@@ -11,14 +11,11 @@ Rails.application.routes.draw do
   patch 'books/:id', to: 'books#update' # update (as needed)
   put 'books/:id', to: 'books#update' # update (full replacement)
   delete 'books/:id', to: 'books#destroy' # destroy
-<<<<<<< HEAD
 
   get 'books/:id/reviews/new', to: 'reviews#new', as: 'new_review' # new
   post 'books/:id/reviews/new', to: 'reviews#create' # create
 
-=======
   get '/tagged', to: "books#tagged", as: :tagged
->>>>>>> cd9d1f9760dbdf55253cebaeded4fd3247798fe2
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
