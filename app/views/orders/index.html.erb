@@ -39,11 +39,11 @@ h4 {text-align: center;}
        <h3 class="card-title"><%= link_to item.book.title, book_path(item.book_id)%></h3> 
        <p class="card-text">By <%= item.book.author %></p> 
        <h5 class="card-text"><small class="text-muted"><%= item.book.genre %> | <%= number_to_currency(item.book.price)%></small></h5>
- 
+       <h5 class="card-text"><small class="text-muted"><%= order.email %>
     
         <%= form_for item, remote: true do |f| %>
            <%= f.hidden_field :book_id, :value => item.book.id %>
-           <%= f.number_field :quantity, :value => item.quantity.to_i, :min => 1%>
+           <p>Quantity:</p><%= f.number_field :quantity, :value => item.quantity.to_i, :min => 1%>
        <% end %> <!-- end form -->
    </div>  <!-- container --> 
       </div> <!-- card-body-->
