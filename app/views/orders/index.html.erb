@@ -41,7 +41,7 @@ h4 {text-align: center;}
        <h5 class="card-text"><small class="text-muted"><%= item.book.genre %> | <%= number_to_currency(item.book.price)%></small></h5>
        <h5 class="card-text"><small class="text-muted">Shipping address:<%= order.email %></small></h5>
        <h5 class="card-text"><small class="text-muted">Credit Card: xxxx xxxx xxxx xxxx</small></h5>
-       <h5 class="card-text"><small class="text-muted">Item Id:<%= order.id %></small></h5>
+       <h5 class="card-text"><small class="text-muted">Order Id:<%= order.id %></small></h5>
     
         <%= form_for item, remote: true do |f| %>
            <%= f.hidden_field :book_id, :value => item.book.id %>
