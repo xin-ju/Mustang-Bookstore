@@ -22,7 +22,7 @@ end
     respond_to do |format|
       format.html { render :show, locals: { book: book } }
     end
-  
+  end
   
   def new
     book = Book.new
