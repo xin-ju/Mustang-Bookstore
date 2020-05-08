@@ -7,15 +7,14 @@ class BooksController < ApplicationController
     @books = Book.filter(params[:genre])
 
     @search = params["search"]
+ 
     if @search.present?
         @title = @search["title"]
         @books = Book.where("title ILIKE ?", "%#{@title}%")
-       
+    
     end
-  end
-
-  
-
+end
+       
   def show
     book = Book.find(params[:id])
     @cart_item = current_cart.cart_items.new
@@ -34,7 +33,7 @@ class BooksController < ApplicationController
 
   def create
     # new object from params
-    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview, :rating))
+    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview, :rating, :avatar))
     # respond_to block
     respond_to do |format|
       format.html do
@@ -69,7 +68,8 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html do
         # if question updates with permitted params
-        if books.update(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview))
+        if books.update(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview, :avatar))
+          
           # success message
           flash[:success] = 'Product updated successfully'
           # redirect to index
@@ -90,6 +90,7 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     # destroy object
     book.destroy
+    book.avatar.purge
     # respond_to block
     respond_to do |format|
         format.html do

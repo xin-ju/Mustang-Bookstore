@@ -1,3 +1,6 @@
+<style>
+    p { color: 	#323232; }
+  </style>
 
 
 <br>
@@ -36,10 +39,14 @@
 <div class = "row">
 <%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
-    <p style="color:black"><b><i><%= book.title %></i></b></p>
+    <p><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
+<% if book.avatar.attached? %>
+ <image src="<%=(url_for(book.avatar))%>" width="120" height="200">
+ <%end%>
+   
     <h6><%= number_to_currency(book.price) %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <%= link_to '🔨', edit_book_path(book)  %>
@@ -71,10 +78,13 @@
 <div class = "row">
 <%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
-    <p style="color:black"><b><i><%= book.title %></i></b></p>
+    <p><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
+<% if book.avatar.attached? %>
+ <image src="<%=(url_for(book.avatar))%>" width="120" height="200">
+ <%end%>
     <h6><%= number_to_currency(book.price) %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <br>

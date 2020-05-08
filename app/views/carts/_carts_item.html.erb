@@ -1,3 +1,4 @@
+
 <head>
 <style>
 img {
@@ -44,12 +45,17 @@ h4 {text-align: center;}
  <hr class="solid"> 
  <% @cart_items.each do |item| %>
  <div class="card mb-3" style="max-width: 540px; max-height: 250px; border: none;"> 
-  <% if item.book.assetlabel %>
    <div class="row no-gutters"> 
     <div class="col-md-4"> 
+    <% if item.book.assetlabel %>
       <%= link_to image_tag(item.book.assetlabel, height: 250), book_path(item.book_id)%><br></p> 
+    <%end%>
+     <% if item.book.avatar.attached? %>
+    <image src="<%=(url_for(item.book.avatar))%>" width="200" height="250">
+    <%end%>
     </div> <!-- col-md-4-->
-  <%end%>
+ 
+  
     <div class="col-md-8"> 
       <div class="card-body"> 
     <div class="container">
@@ -100,4 +106,3 @@ h4 {text-align: center;}
 </div>
 </div> <!-- sidebar -->
 <%end%> <!-- if current cart subtotal is not 0 -->
-

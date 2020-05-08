@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   patch 'books/:id', to: 'books#update' # update (as needed)
   put 'books/:id', to: 'books#update' # update (full replacement)
   delete 'books/:id', to: 'books#destroy' # destroy
-
+  get '/tagged', to: "books#tagged", as: :tagged
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end

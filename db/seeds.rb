@@ -269,7 +269,7 @@ book17 = Book.create!(
 book18 = Book.create!(
   title: 'Say Nothing: A True Story of Murder and Memory in Northern Ireland',
   author: 'Patrick Radden Keefe',
-  genre: 'eBook',
+  genre: 'Nonfiction',
   price: 16.95,
   rating: 4.6,
   overview: 'In December 1972, Jean McConville, a thirty-eight-year-old mother of ten, was dragged from her Belfast home by masked intruders, her children clinging to her legs. They never saw her again. Her abduction was one of the most notorious episodes of the vicious conflict knon as The Troubles.
