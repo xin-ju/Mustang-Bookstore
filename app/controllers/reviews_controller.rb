@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   before_action :authenticate_user!
 
   def new
@@ -8,9 +9,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.new(params.require(:review).permit(:rating, :comment))
-    review.book = book
-    review.user = current_user
+    review = Review.new(params.require(:review).permit(:rating, :comment, :title))
+
     respond_to do |format|
       format.html do
         # if question saves
@@ -30,4 +30,5 @@ class ReviewsController < ApplicationController
     end
   end
   end
+ 
 end

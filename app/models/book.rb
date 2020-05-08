@@ -24,6 +24,7 @@ class Book < ApplicationRecord
     validates :rating, presence: true
     validates :title, presence: true, uniqueness: true
     validates :price, presence: true
+    
 
     has_many :reviews, dependent: :destroy
     has_many :cart_items, dependent: :destroy
