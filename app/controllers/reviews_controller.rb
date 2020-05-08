@@ -1,51 +1,31 @@
 class ReviewsController < ApplicationController
-    before_action :find_review
-  before_action :find_review, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!
 
   def new
-    @review = Review.new
+    review = Review.new
+    respond_to do |format|
+      format.html { render :new, locals: { review: review } }
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.book_id = @book.id
-    @review.user_id = current_user.id
-
-    if @review.save
-      redirect_to book_path(@book)
-    else
-      render 'new'
+    review = Review.new(params.require(:review).permit(:rating, :comment))
+    respond_to do |format|
+      format.html do
+        # if question saves
+        if review.save
+          # success message
+          flash[:success] = "Review added successfully"
+          # redirect to index
+          redirect_to book_url
+          # else
+        else
+          # error message
+          flash.now[:error] = "Error: Review could not be added"
+          # render new
+          render :new, locals: { review: review }
+        end
+      end
     end
   end
-
-  def edit
-
   end
-
-  def update
-    if @review.update(review_params)
-      redirect_to book_path(@book)
-    else
-      render 'edit'
-    end
-  end
-
-  def destroy
-    @review.destroy
-    redirect_to book_path(@book)
-  end
-
-  private
-    def review_params
-      params.require(:review).permit(:rating, :comment)
-    end
-
-    def find_book
-      @book = Book.find(params[:book_id])
-    end
-
-    def find_review
-      @review = Review.find(params[:id])
-    end
 end

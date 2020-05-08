@@ -16,11 +16,6 @@ class BooksController < ApplicationController
      @book = Book.find(params[:id])
       @cart_item = current_cart.cart_items.new
       @wishlist_item = current_wishlist.wishlist_items.new
-      if @book.reviews.blank?
-        @average_review = 0
-      else
-        @average_review = @book.reviews.average(:rating).round(2)
-      end
       respond_to do |format|
         format.html { render :show, locals: { book: @book } }
       end
@@ -41,7 +36,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html do
         # if question saves
-        if book.save!
+        if book.save
           # success message
           flash[:success] = "Product added successfully"
           # redirect to index
