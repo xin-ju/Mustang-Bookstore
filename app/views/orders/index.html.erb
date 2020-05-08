@@ -1,28 +1,59 @@
-<h2>All Orders</h2>
+<head>
+<style>
+img {
+  float: left; padding-right: 50px;
+}
+h1 {text-align: center;}
+h2 {text-align: center;}
+h4 {text-align: center;}
+
+.main {
+  margin-right: 120px; /* Same width as the sidebar + right position in px */
+  font-size: 16px; /* Increased text to enable scrolling */
+  padding: 20px 20px;
+}
+</style>
+</head>
+<body>
+<div>
 
 
-<!-- Only display orders of that user not all previous orders in the database (add User has order association) --> 
-<% @orders.each do |order| %>
-  <p>Credit Card Number: <%= order.credit_card_number %></p>
-  <p>Exp. Date: <%= order.exp_month %>/<%= order.exp_year %></p>
 
-  <p>Items: </p>  
-  <ul>
-    <% order.cart_items.each do|item|%> 
-    <% if item.book.assetlabel %>
-    <%= link_to image_tag(item.book.assetlabel, width: 175, height: 250), book_path(item.book_id)%><br>
-    <%end%>
-    <% if item.book.avatar.attached? %>
-  <image src="<%=(url_for(item.book.avatar))%>" width="175" height="250">
- <%end%>
+
+
+<div class="main">
+<h1> Order History </h1> 
+ <hr class="solid"> 
+ <% @orders.each do |order| %>
+ <div class="card mb-3" style="max-width: 540px; max-height: 250px; border: none;"> 
+  <% order.cart_items.each do |item|%>
+  <% if item.book.assetlabel %>
+   <div class="row no-gutters"> 
+    <div class="col-md-4"> 
+      <%= link_to image_tag(item.book.assetlabel, height: 250), book_path(item.book_id)%><br></p> 
+    </div> <!-- col-md-4-->
+  <%end%>
+    <div class="col-md-8"> 
+      <div class="card-body"> 
     <div class="container">
-       <h2><%= link_to item.book.title, book_path(item.book_id)%></h2>
-       <p>By <%= item.book.author %></p>
-       <h5><%= item.book.genre %> | <%= number_to_currency(item.book.price)%> </h5>
-    <!-- <li>Item Price: <%=item.total %></li> --> 
-    </div>
-    <% end %> 
-  </ul> 
-  -----------------------------------------------------
-<% end %>
+       <h3 class="card-title"><%= link_to item.book.title, book_path(item.book_id)%></h3> 
+       <p class="card-text">By <%= item.book.author %></p> 
+       <h5 class="card-text"><small class="text-muted"><%= item.book.genre %> | <%= number_to_currency(item.book.price)%></small></h5>
+       <h5 class="card-text"><small class="text-muted">Shipping address:<%= order.email %></small></h5>
+       <h5 class="card-text"><small class="text-muted">Credit Card: xxxx xxxx xxxx xxxx</small></h5>
+       <h5 class="card-text"><small class="text-muted">Order Id:<%= order.id %></small></h5>
+    
+        <%= form_for item, remote: true do |f| %>
+           <%= f.hidden_field :book_id, :value => item.book.id %>
+           <p>Quantity:<%= f.number_field :quantity, :value => item.quantity.to_i, :min => 1%></p>
+       <% end %> <!-- end form -->
+   </div>  <!-- container --> 
+      </div> <!-- card-body-->
+    </div> <!-- col-md-8-->
+  </div> <!-- "row no-gutters"--> 
+</div> <!-- "card mb-3" style="max-width: 540px;"-->
+ <hr class="solid"> 
+<%end%> <!-- each do cart_items loop -->
+</div> <!-- main -->
+<%end%>
 
