@@ -117,12 +117,19 @@ h2 {text-align: center;}
   <!-- <div class="card-header bg-light text-dark"> --> 
     <h2 class="card-title">Delivered Electronically </h2> 
   </div>
+  
+
   <div class="card-body">
     <%current_cart.cart_items.each do |item| %>
      <div class="card mb-3" style="max-width: 450px; max-height: 250px; border: none;"> 
       <div class="row no-gutters"> 
         <div class="col-md-4"> 
+        <% if item.book.assetlabel %>
         <%= link_to image_tag(item.book.assetlabel, height: 195)%><br></p> 
+        <%end%>
+        <% if item.book.avatar.attached? %>
+        <image src="<%=(url_for(item.book.avatar))%>" width="200" height="250">
+        <%end%>
         </div> <!-- col-md-4-->
       <div class="col-md-8"> 
        <div class="card-body"> 
@@ -170,3 +177,9 @@ h2 {text-align: center;}
 </div>
 </div> <!-- sidebar -->
 <% end %>
+
+
+
+
+
+

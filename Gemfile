@@ -26,6 +26,10 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#Gemfile 
+gem 'pg_search'
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -66,3 +70,5 @@ gem 'devise'
 gem "simple_form", "~> 5.0"
 #CreditCardValidations
 gem 'credit_card_validations'
+
+gem "acts-as-taggable-on", "~> 6.5"

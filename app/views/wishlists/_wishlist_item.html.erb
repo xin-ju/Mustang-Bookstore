@@ -1,39 +1,78 @@
 <head>
 <style>
 img {
-    float: left; padding-right: 50px;
+  float: left; padding-right: 50px;
+}
+h1 {text-align: center;}
+h2 {text-align: center;}
+h4 {text-align: center;}
+
+.sidenav {
+  margin-top: 100px; 
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  right: 40px;
+  background: #eee;
+  overflow-x: hidden;
+}
+
+.main {
+  margin-right: 120px; 
+  font-size: 16px; 
+  padding: 20px 20px;
 }
 </style>
 </head>
 <body>
 <div>
 
-<h1> Wishlist </h1>
 
-
-<% @wishlist_items.each do |item| %>
-<% if item.book.assetlabel %>
-    <%= image_tag(item.book.assetlabel, height: 200) %><br></p>
-<%end%>
-    <div class="container">
-        <h2><%= item.book.title %></h2>
-        <p>By <%= item.book.author %></p>
-        <h5><%= item.book.genre %> | <%= number_to_currency(item.book.price) %> </h5>
-
-        <%= form_for item, remote: true do |f| %>
-            <%= f.hidden_field :book_id, :value => item.book.id %>
-            <%= f.number_field :quantity, :value => item.quantity.to_i, :min => 1%>
-            <%= f.submit "Update"%>
-            <%= link_to "Remove", wishlist_item_path(item), method: :delete, remote: true %>          
-        <% end %>
-
-   
-     <p>Current Wishlist Subtotal: <%= number_to_currency(item.total) %></p>
+<% if current_wishlist.subtotal.zero? == true  %>
+  <div class="card-body">
     <br>
-    </div>
-<% end %>
+    <h2> Your Wishlist is currently empty. </h2> <br>
+  </div> 
+<%end%>
 
-<h3>Your current wishlist value has a total of: <%= number_to_currency(current_wishlist.subtotal) %></h3>
+<% if current_wishlist.subtotal.zero? == false  %> 
+<div class="main">
+<h1> Wishlist </h1> 
+ <hr class="solid"> 
+ <% @wishlist_items.each do |item| %>
+ <div class="card mb-3" style="max-width: 540px; max-height: 250px; border: none;"> 
+   <div class="row no-gutters"> 
+    <div class="col-md-4"> 
+     <% if item.book.assetlabel %>
+      <%= link_to image_tag(item.book.assetlabel, height: 250), book_path(item.book_id)%><br></p> 
+    <%end%>
+     <% if item.book.avatar.attached? %>
+    <image src="<%=(url_for(item.book.avatar))%>" width="200" height="250">
+    <%end%>
+    </div>
+    <div class="col-md-8"> 
+      <div class="card-body"> 
+    <div class="container">
+       <h3 class="card-title"><%= link_to item.book.title, book_path(item.book_id)%></h3> 
+       <p class="card-text">By <%= item.book.author %></p> 
+       <h5 class="card-text"><small class="text-muted"><%= item.book.genre %> | <%= number_to_currency(item.book.price)%></small></h5>
+ 
+    
+        <%= form_for item, remote: true do |f| %>
+           <%= f.hidden_field :book_id, :value => item.book.id %>
+           <%= f.number_field :quantity, :value => item.quantity.to_i, :min => 1%>
+           <%= f.submit "Update"%><%= link_to "Remove", wishlist_item_path(item), method: :delete, remote: true%>
+       <% end %>
+      <p>Subtotal: <%= number_to_currency(item.total) %></p> 
+   </div> 
+      </div>
+    </div>
+  </div>
+</div>
+ <hr class="solid"> 
+<%end%>
+</div> 
+<%end%> 
 
 
 

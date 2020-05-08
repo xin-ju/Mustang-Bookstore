@@ -1,9 +1,26 @@
+<<<<<<< HEAD
 <%= simple_form_for :search, url: books_path , method: "GET", html: { class: 'form-inline' } do |f| %>
   <%= f.input :title, input_html: {value: ""} %>   
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
+=======
+<style>
+    p { color: 	#323232; }
+  </style>
 
-<p style="text-align:center"><% if current_user.try(:admin?)==true %>rai
+>>>>>>> cd9d1f9760dbdf55253cebaeded4fd3247798fe2
+
+<br>
+    <h4>Filter by:</h4>
+    <%= form_tag(books_path, method: "get") do %>
+        <%= select_tag "genre", options_from_collection_for_select(Book.all.to_a.uniq{ |o| o.genre}, :genre, :genre), prompt: 'Genre'%>
+        <input type="submit" value="Submit">
+    <% end %> <!-- end of form -->
+
+
+
+
+<p style="text-align:center"><% if current_user.try(:admin?)==true %>
        <em><%= link_to 'Add New Product', new_book_path %></em>
 </p>
 <%end%>
@@ -29,11 +46,15 @@
 <div class = "row">
 <%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
-    <p style="color:black"><b><i><%= book.title %></i></b></p>
+    <p><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
-    <h6>$<%= book.price %></h6>
+<% if book.avatar.attached? %>
+ <image src="<%=(url_for(book.avatar))%>" width="120" height="200">
+ <%end%>
+   
+    <h6><%= number_to_currency(book.price) %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <%= link_to '🔨', edit_book_path(book)  %>
     <%= link_to '🗑', book_path(book), method: :delete %>
@@ -64,11 +85,14 @@
 <div class = "row">
 <%@books.each do |book|%>
 <div class = "col-xs-12 col-m-6 col-md-4 col-lg-3 text-center">
-    <p style="color:black"><b><i><%= book.title %></i></b></p>
+    <p><b><i><%= book.title %></i></b></p>
 <% if book.assetlabel %>
         <%= link_to image_tag(book.assetlabel, height: 200, width: 120), book_path(book) %>
 <%end%>
-    <h6>$<%= book.price %></h6>
+<% if book.avatar.attached? %>
+ <image src="<%=(url_for(book.avatar))%>" width="120" height="200">
+ <%end%>
+    <h6><%= number_to_currency(book.price) %></h6>
     <%= link_to 'Product Details', book_path(book) %>
     <br>
     <br>

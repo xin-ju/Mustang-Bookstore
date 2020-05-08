@@ -3,14 +3,17 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   def index
     @books = Book.all
+
+    @books = Book.filter(params[:genre])
+
     @search = params["search"]
+ 
     if @search.present?
         @title = @search["title"]
         @books = Book.where("title ILIKE ?", "%#{@title}%")
     
-      
-  end
     end
+<<<<<<< HEAD
   
     def show
      @book = Book.find(params[:id])
@@ -19,6 +22,16 @@ class BooksController < ApplicationController
       respond_to do |format|
         format.html { render :show, locals: { book: @book } }
       end
+=======
+end
+       
+  def show
+    book = Book.find(params[:id])
+    @cart_item = current_cart.cart_items.new
+    @wishlist_item = current_wishlist.wishlist_items.new
+    respond_to do |format|
+      format.html { render :show, locals: { book: book } }
+>>>>>>> cd9d1f9760dbdf55253cebaeded4fd3247798fe2
     end
   
   
@@ -31,7 +44,7 @@ class BooksController < ApplicationController
 
   def create
     # new object from params
-    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview, :rating))
+    book = Book.new(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview, :rating, :avatar))
     # respond_to block
     respond_to do |format|
       format.html do
@@ -66,7 +79,8 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html do
         # if question updates with permitted params
-        if books.update(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview))
+        if books.update(params.require(:book).permit(:title, :author, :price, :genre,:publication_date,:page_number, :book_format, :overview, :avatar))
+          
           # success message
           flash[:success] = 'Product updated successfully'
           # redirect to index
@@ -87,6 +101,7 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     # destroy object
     book.destroy
+    book.avatar.purge
     # respond_to block
     respond_to do |format|
         format.html do

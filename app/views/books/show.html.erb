@@ -2,26 +2,48 @@
 
 <head>
 <style>
+
+h1 { color: #FF0000; }
+ 
 img {
-  float: left; padding-right: 50px;
+  float: left;
+  margin: 20px;
 }
+P { text-align: center }
+.sidenav {
+  margin-top: 20px; /* Stay away from top navbar */
+  
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  background: #eee;
+  overflow-x: hidden;
+}
+
 
 </style>
 </head>
 <body>
 <div>
 
-<h1 style="font-size:75px"><%=book.title %></h1>
+<h1 style="font-size:65px";><%=book.title %></h1>
 
 <% if book.assetlabel %>
 <%= image_tag( book.assetlabel, height: 600) %><br></p>
 <%end%>
+ <% if book.avatar.attached? %>
 
-<div class="container">
-<%= book.overview %>
-</div>
+ <image src="<%=(url_for(book.avatar))%>" style="float:left;width:320px;height:500px;" >
+
+ <%end%>
+
+
+ <p> <%= book.overview %></p>
+
 <br>
 <br>
+
+  
 <% if current_user.try(:admin?)== false %>
     <td>
       <%= form_for @cart_item, remote: true  do |f|%> 
@@ -35,7 +57,7 @@ img {
     </td>
 <%end%>
 <br>
-
+ <br>
 <% if current_user.try(:admin?) == false %>
     <td>
       <%= form_for @wishlist_item, remote: true do |f| %>
@@ -46,12 +68,21 @@ img {
         <%= link_to 'View Wishlist', wishlists_path %>
         <div id="wishlist"><%= render 'wishlists/wishlist'%></div>
        <% end %>
-    
-
     <% end %>
 
+<<<<<<< HEAD
 
       <div><%= book.author%></div>
+=======
+    <div class="sidenav">
+<div class="card-header bg-light text-dark">
+<div class="pull-right" style="margin: 10px">
+    <div class="pull-right" style="margin: 5px">
+      
+      <h4> Book Information</h4> 
+      <hr class="solid">
+    <div><%= book.author%></div>
+>>>>>>> cd9d1f9760dbdf55253cebaeded4fd3247798fe2
       <div><%= book.page_number %> pages </div>
       <div><%= book.book_format %></div>
       <div><%= book.genre %></div>
@@ -63,9 +94,22 @@ img {
 				<%= link_to "Add a Review", new_review_path, class: "btn-custom" %>
 			</div>
      
+         _________________________________________________
+      </p> 
+   </div>   
 </td>
+<<<<<<< HEAD
 <br>
 </div>
+=======
+
+
+
+>>>>>>> cd9d1f9760dbdf55253cebaeded4fd3247798fe2
 </body>
 
 </html>
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> cd9d1f9760dbdf55253cebaeded4fd3247798fe2
