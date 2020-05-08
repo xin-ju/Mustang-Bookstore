@@ -84,6 +84,10 @@ P { text-align: center }
       <div><%= book.publication_date %></div>
       <div>$<%= book.price %> (tax included in price)</div>
       
+
+      <div>
+				<%= link_to "Add a Review", new_review_path, class: "btn-custom" %>
+			</div>
      
          _________________________________________________
       </p> 
@@ -93,5 +97,6 @@ P { text-align: center }
 
 
 </body>
+
 </html>
  

@@ -1,0 +1,27 @@
+
+		
+		<h1>New Review</h1>
+		<%= form_with model: review, url: new_review_path, method: :post, local: true, scope: :review do |f| %>
+			<div>
+              <%= f.label :title %><br>
+              <%= f.text_field  :title %>
+			</div>
+			<br>
+			<div>
+              <%= f.label :comment %><br>
+              <%= f.text_area  :comment, size: "27x7" %>
+			</div>
+			<br>
+			<div>
+              <%= f.label :rating %><br>
+              <%= f.select :rating, options_for_select((1..5).step(0.5), review.rating) %>
+			</div>
+			<br>
+			<br>
+			<div>
+			<p style="text-align:right">
+			<%= f.submit "Submit Review" %>
+			</p>
+			</div>
+		<% end %>
+	
