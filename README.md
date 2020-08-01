@@ -1,7 +1,8 @@
-# Project App Repo
+# Welcome to Mustang Bookstore!
 
-- This project contains a basic Rails app skeleton.
-- Customize this README file for your project as per the instructions you will be provided.
+ - This site was created by Chris Moore, Eriel Traywick, Bailey Chambers, and Xin Ju.
+ 
+ 
 
 ## Getting Started
 
@@ -17,7 +18,7 @@ Run `bundle install` to install all the other gem dependencies in the `project-a
 
 Run `yarn install` to install all the JS dependencies in a `node_modules` folder.
 
-Run `rails db:migrate:reset` to create/reset the project databases.
+Run `rails db:migrate:reset db:seed` to create/reset the project databases.
 
 As a quick sanity check to make sure that things are working, you can run `rails test`. Although the app has no tests, the command should run without error.
 
