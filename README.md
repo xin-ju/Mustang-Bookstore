@@ -26,7 +26,7 @@ You can also run `rails s` and open <http://localhost:3000> to confirm that the 
 
 ## Site
 
-![Uploading Mustang Books Welcome Page.png…]()
+![](Welcome Page.png)
 
 
 
