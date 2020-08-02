@@ -26,9 +26,21 @@ You can also run `rails s` and open <http://localhost:3000> to confirm that the 
 
 ## Site
 
-![](images/Screen Shot 2020-08-01 at 7.11.46 PM.png)
+<img width="700"  alt="1" src="images/Welcome Page.png">
 
-<img src="Screen Shot 2020-08-01 at 7.11.46 PM.png" width="800" />
+<img width="700"  alt="1" src="images/Sign Up.png">
+
+<img width="700"  alt="1" src="images/Login.png">
+
+<img width="700"  alt="1" src="images/Inventory.png">
+
+<img width="700"  alt="1" src="images/Empty Cart.png">
+
+<img width="700"  alt="1" src="images/Cart.png">
+
+<img width="700"  alt="1" src="images/Checkout 1.png">
+
+<img width="700"  alt="1" src="images/Checkout 2.png">
 
 
 ## About the Project Skeleton
