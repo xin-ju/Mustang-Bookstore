@@ -28,8 +28,7 @@ You can also run `rails s` and open <http://localhost:3000> to confirm that the 
 
 ![](images/Screen Shot 2020-08-01 at 7.11.46 PM.png)
 
-
-
+<img src="Screen Shot 2020-08-01 at 7.11.46 PM.png" width="800" />
 
 
 ## About the Project Skeleton
