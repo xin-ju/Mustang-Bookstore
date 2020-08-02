@@ -26,7 +26,7 @@ You can also run `rails s` and open <http://localhost:3000> to confirm that the 
 
 ## Site
 
-![](Welcome Page.png)
+![](images/Screen Shot 2020-08-01 at 7.11.46 PM.png)
 
 
 
