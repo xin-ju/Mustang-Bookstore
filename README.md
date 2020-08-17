@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-I assume that you've already completed the demo steps here: <https://human-se.github.io/rails-demos-n-deets-2020/demo-dev-env/>
+Setting up your Development Environment: <https://human-se.github.io/rails-demos-n-deets-2020/demo-dev-env/>
 
 Once you've cloned this repo and have a working directory, you can perform the following steps to setup and run the app.
 
